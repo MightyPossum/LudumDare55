@@ -10,7 +10,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	timer += delta
+	if timer >= .4:
+		_spawn_new_enemy(enemy1scene)
+		timer = 0
 
 
 func _spawn_new_enemy(enemy_scene : PackedScene):
