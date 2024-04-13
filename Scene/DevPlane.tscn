@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://drgbmudxlp8v1"]
+[gd_scene load_steps=8 format=3 uid="uid://drgbmudxlp8v1"]
 
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="1_3ofj3"]
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="2_4hxl2"]
-[ext_resource type="Script" path="res://Script/EnemyPath.gd" id="3_uai5e"]
-[ext_resource type="PackedScene" uid="uid://bpid1oq008o1h" path="res://Scene/enemy.tscn" id="4_eysdb"]
+[ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="4_eysdb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nbkpp"]
 size = Vector3(60, 2, 60)
@@ -47,5 +46,6 @@ transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_oowik")
-script = ExtResource("3_uai5e")
-enemy1scene = ExtResource("4_eysdb")
+
+[node name="Enemy" parent="Path3D" instance=ExtResource("4_eysdb")]
+transform = Transform3D(0.859507, -0.0291459, -0.510293, 1.86265e-09, 0.998373, -0.057023, 0.511125, 0.0490117, 0.858108, -9.80404, 3.67393, 6.81522)

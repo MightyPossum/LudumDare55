@@ -12,8 +12,9 @@ func _ready():
 func _process(delta):
 	pass
 
-func die():
+func game_over():
 	pass
 
-func _on_area_body_entered(body):
-	print('hit')
+func _on_area_area_entered(area):
+	health -= 1
+	print(health)
