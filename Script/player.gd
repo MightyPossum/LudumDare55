@@ -4,12 +4,10 @@ extends CharacterBody3D
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @export var projectileModel : PackedScene
 
-const SPEED = 5.0
+const SPEED = 25.0
 const ACCELERATION = 100.0
 
-
-
-var jump_height: float = 1 
+var jump_height: float = 3 
 var camera_sensitivity: float = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
