@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bycw2g4fan36b"]
+[gd_scene load_steps=12 format=3 uid="uid://bycw2g4fan36b"]
 
 [ext_resource type="PackedScene" uid="uid://bnowhac7nlhg6" path="res://Models/floor.glb" id="1_grqmb"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_qpnpm"]
-[ext_resource type="PackedScene" uid="uid://jushqoahplno" path="res://Models/enemy.glb" id="2_8mm4q"]
 [ext_resource type="PackedScene" uid="uid://bnxonel36v2ul" path="res://Models/Portal.glb" id="3_ars2h"]
 [ext_resource type="PackedScene" uid="uid://7ty24bk3b1g1" path="res://Models/box.glb" id="4_44npu"]
 [ext_resource type="PackedScene" uid="uid://7x6xguqalvkv" path="res://Models/SacredObject.glb" id="5_1r7wo"]
@@ -16,8 +15,8 @@ size = Vector3(66, 1.295, 66.645)
 
 [sub_resource type="Curve3D" id="Curve3D_3b664"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -78, 12, 5, -7, 0, 10, 7, 0, -10, -46, 12, -20, 2.1, 0, -6.6, -2.1, 0, 6.6, -33, 12, -55, -17.8, 0, 1, 17.8, 0, -1, 7, 12, -79, 3, 8, -13, -3, -8, 13, 27, 12, -54, 6, 3, -18, -6, -3, 18, 24, 12, -2, 4, 5, -17, -4, -5, 17, 36, 12, 62, -6, 0, -6, 6, 0, 6, 35, 12, 90, -9, 0, 7, 9, 0, -7, 68.9652, 12, 92.3626, -10, 0, 14, 10, 0, -14, 67.1728, 12, 37.2457, 0, 0, 0, 0, 0, 0, 86.6653, 12, 29.4039),
-"tilts": PackedFloat32Array(1.5708, -3.05433, 0, 0, 0, 0, 1.74533, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -78, 7, 5, -7, 0, 10, 7, 0, -10, -46, 6, -21, 2.1, 0, -6.6, -2.1, 0, 6.6, -33, 6, -55, -17.8, 0, 1, 17.8, 0, -1, 7, 6, -79, 3, 0, -14, -3, 0, 14, 27, 8, -54, 6, 0, -18, -6, 0, 18, 24, 7, -1, 4, 5, -17, -4, -5, 17, 36, 5, 62, -6, 0, -6, 6, 0, 6, 35, 5, 90, -9, 0, 7, 9, 0, -7, 69, 6, 87, -10, 0, 14, 10, 0, -14, 67, 6, 38, 0, 0, 0, 0, 0, 0, 87, 12, 30),
+"tilts": PackedFloat32Array(-0.00338837, -3.05433, 0, 0, 0, 0, 1.5708, 0, 0, 0, 0)
 }
 point_count = 11
 
@@ -36,9 +35,6 @@ shape = SubResource("BoxShape3D_w11t5")
 
 [node name="floor" parent="MapEnvironmentContainer/Floor" instance=ExtResource("1_grqmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14395, 0, -0.137213)
-
-[node name="enemy" parent="MapEnvironmentContainer" instance=ExtResource("2_8mm4q")]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -77.0864, 6.75128, 3.88019)
 
 [node name="Portal" parent="MapEnvironmentContainer" instance=ExtResource("3_ars2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.5852, 7.74401, 4.37442)
@@ -138,9 +134,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 87, 12, 30)
 visible = false
 
 [node name="Path1" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_3b664")
 script = ExtResource("6_u3jm2")
 enemy1scene = ExtResource("7_rx2go")
 
 [node name="Player" parent="." instance=ExtResource("7_x51ax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.4, 6.2, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.83159, -0.0724846, -0.550639, 0.532697, 0.384605, 0.753865, 0.157135, -0.920231, 0.358446, -58, 56, -116)
+light_energy = 2.676

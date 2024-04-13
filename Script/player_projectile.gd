@@ -17,4 +17,3 @@ func _process(delta):
 		queue_free()
 	velocity = transform.basis.z * speed
 	move_and_collide(-velocity*delta)
-	pass
