@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bycw2g4fan36b"]
+[gd_scene load_steps=11 format=3 uid="uid://bycw2g4fan36b"]
 
 [ext_resource type="PackedScene" uid="uid://bnowhac7nlhg6" path="res://Models/floor.glb" id="1_grqmb"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_qpnpm"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://7ty24bk3b1g1" path="res://Models/box.glb" id="4_44npu"]
 [ext_resource type="PackedScene" uid="uid://7x6xguqalvkv" path="res://Models/SacredObject.glb" id="5_1r7wo"]
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="5_becxh"]
-[ext_resource type="Script" path="res://Script/EnemyPath.gd" id="6_u3jm2"]
 [ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="7_rx2go"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="7_x51ax"]
 
@@ -20,8 +19,10 @@ _data = {
 }
 point_count = 11
 
-[node name="Map1" type="Node3D"]
+[node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
 script = ExtResource("1_qpnpm")
+enemyScenes = Array[PackedScene]([ExtResource("7_rx2go"), ExtResource("7_rx2go"), ExtResource("7_rx2go")])
+pathNodes = [NodePath("Path1"), NodePath("Path1"), NodePath("Path1")]
 
 [node name="MapEnvironmentContainer" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
@@ -136,8 +137,6 @@ visible = false
 [node name="Path1" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_3b664")
-script = ExtResource("6_u3jm2")
-enemy1scene = ExtResource("7_rx2go")
 
 [node name="Player" parent="." instance=ExtResource("7_x51ax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.4, 6.2, 0)
