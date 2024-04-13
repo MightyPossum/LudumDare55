@@ -1,23 +1,107 @@
 extends Node3D
 
+var enemy_wave_array = Array([20,30,40])
+var late_wave_incrementer : float = 0.0
+
+@export var enemyScenes : Array[PackedScene]
+@export var pathNodes : Array[Path3D]
+
+
+var spawning_delay_default : float = 5.0
+
+var enemies_to_spawn : int;
+var current_enemy_speed : float;
+var spawning_delay : float = spawning_delay_default;
+var current_enemy_health : int;
+
+var current_number_of_enemies : int;
+var current_wave : int = 1;
+
+var spawning : bool = true;
+var round_wait_delay : int = 2
+
+func _set_wave_details(wave_number : int) -> void:	
+	if wave_number%5 == 0:
+		late_wave_incrementer += 2.0
+
+	enemies_to_spawn = int(wave_number * (4 + (late_wave_incrementer/2)))
+
+	current_enemy_speed = 5 + (wave_number + late_wave_incrementer)/10
+	
+	if not spawning_delay <= 0.183:
+		spawning_delay = spawning_delay_default - ((wave_number+late_wave_incrementer)/10.0)
+
+	#limit the spawner speed
+	if spawning_delay <= 0.183:
+		spawning_delay = 0.183
+
+	current_enemy_health = int(5 + late_wave_incrementer)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	await get_tree().create_timer(round_wait_delay).timeout
+	_prepare_wave();
 
+func _prepare_wave() -> void:
+	_set_wave_details(current_wave);
+	spawning = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-func _get_number_of_enemies(wave_number : int) -> int:
-	var enemy_number
-	
-	match wave_number:
-		1:
-			enemy_number = 20
-		2:
-			enemy_number = 30
-		3:
-			enemy_number = 40 
-	
+func _physics_process(delta: float) -> void:
+	if !spawning:
+		spawning = true
+		await get_tree().create_timer(spawning_delay).timeout
+		_spawn_new_enemy();
+
+func _spawn_new_enemy():
+	if enemies_to_spawn >= 1:
+		_add_enemy_to_lane();
+		current_number_of_enemies += 1;
+		enemies_to_spawn -= 1
+		spawning = false
+	elif enemies_to_spawn <= 0 and current_number_of_enemies <= 0:
+		await get_tree().create_timer(round_wait_delay).timeout
+		current_wave += 1
+		_prepare_wave();
+		spawning = false
+	else:
+		spawning = false
+
+func _add_enemy_to_lane():
+
+	var spawn_ready_enemy = enemyScenes[_get_random_enemy()].instantiate();
+	pathNodes[_get_random_path()].add_child(spawn_ready_enemy);
+
+func _get_random_path() -> int:
+	var path_number : int = 0;
+	var rng = RandomNumberGenerator.new()
+	var weight1 = 1030
+	var weight2 = 870
+	var weight3 = 250
+	var rand = rng.randf_range(0, weight1 + weight2 + weight3)
+
+	if rand <= weight1:
+		path_number = 0
+	elif rand > weight1 && rand <= (weight1 + weight2):
+		path_number = 1
+	elif rand > (weight1 + weight2):
+		path_number = 2
+
+	return path_number
+
+func _get_random_enemy() -> int:
+	var enemy_number : int = 0;
+	var rng = RandomNumberGenerator.new()
+	var weight1 = 1030
+	var weight2 = 870
+	var weight3 = 250
+	var rand = rng.randf_range(0, weight1 + weight2 + weight3)
+
+	if rand <= weight1:
+		enemy_number = 0
+	elif rand > weight1 && rand <= (weight1 + weight2):
+		enemy_number = 1
+	elif rand > (weight1 + weight2):
+		enemy_number = 2
+
 	return enemy_number
