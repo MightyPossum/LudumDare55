@@ -2,7 +2,6 @@ extends Camera3D
 
 @export var Camera = Camera3D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$"..".size = DisplayServer.window_get_size()

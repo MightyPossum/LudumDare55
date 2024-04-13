@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bml8dd58priog"]
+[gd_scene load_steps=6 format=3 uid="uid://bml8dd58priog"]
 
 [ext_resource type="Script" path="res://Script/menu scripts/pause_menu.gd" id="1_76p3d"]
+[ext_resource type="Script" path="res://Script/Score.gd" id="2_lpjm5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fj3tx"]
 font_size = 90
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1a53"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_epofh"]
+font_size = 60
 
 [node name="pause_menu" type="Control"]
 layout_mode = 3
@@ -30,6 +37,7 @@ theme_override_constants/margin_bottom = 80
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 94
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
@@ -56,6 +64,20 @@ text = "Main Menu"
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_a1a53")
+script = ExtResource("2_lpjm5")
+
+[node name="High Score" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+text = "High Score: 0"
+label_settings = SubResource("LabelSettings_epofh")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
