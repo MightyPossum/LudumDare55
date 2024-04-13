@@ -18,3 +18,6 @@ func game_over():
 func _on_area_area_entered(area):
 	health -= 1
 	print(health)
+	if area.is_in_group("enemy"):
+		print('ENEMY IN ME')
+		queue_free();
