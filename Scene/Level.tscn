@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bycw2g4fan36b"]
+[gd_scene load_steps=9 format=3 uid="uid://bycw2g4fan36b"]
 
 [ext_resource type="PackedScene" uid="uid://bnowhac7nlhg6" path="res://Models/floor.glb" id="1_grqmb"]
 [ext_resource type="PackedScene" uid="uid://jushqoahplno" path="res://Models/enemy.glb" id="2_8mm4q"]
 [ext_resource type="PackedScene" uid="uid://bnxonel36v2ul" path="res://Models/Portal.glb" id="3_ars2h"]
 [ext_resource type="PackedScene" uid="uid://7ty24bk3b1g1" path="res://Models/box.glb" id="4_44npu"]
 [ext_resource type="PackedScene" uid="uid://7x6xguqalvkv" path="res://Models/SacredObject.glb" id="5_1r7wo"]
-[ext_resource type="PackedScene" uid="uid://dw2vcsrkgjden" path="res://Scene/EnemyPath.tscn" id="6_sp8om"]
+[ext_resource type="PackedScene" uid="uid://ewyk6a5sfhxt" path="res://Scene/EnemyPath.tscn" id="6_sp8om"]
+[ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="7_x51ax"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w11t5"]
+size = Vector3(66, 1.295, 66.645)
 
 [node name="Map1" type="Node3D"]
 
@@ -13,7 +17,13 @@
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="floor" parent="MapEnvironmentContainer" instance=ExtResource("1_grqmb")]
+[node name="Floor" type="StaticBody3D" parent="MapEnvironmentContainer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MapEnvironmentContainer/Floor"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.305, 0, 0)
+shape = SubResource("BoxShape3D_w11t5")
+
+[node name="floor" parent="MapEnvironmentContainer/Floor" instance=ExtResource("1_grqmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14395, 0, -0.137213)
 
 [node name="enemy" parent="MapEnvironmentContainer" instance=ExtResource("2_8mm4q")]
@@ -113,3 +123,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.255
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 87, 12, 30)
 
 [node name="Path1" parent="." instance=ExtResource("6_sp8om")]
+
+[node name="Player" parent="." instance=ExtResource("7_x51ax")]
+transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, -76.4, 6.2, 0)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7t64vdxbr4gk"]
+[gd_scene load_steps=4 format=3 uid="uid://b7t64vdxbr4gk"]
 
 [ext_resource type="Script" path="res://Scene/enemy.gd" id="1_u4etu"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_3d4lx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yxxk"]
 
 [node name="Enemy" type="PathFollow3D"]
 loop = false
@@ -10,3 +12,8 @@ script = ExtResource("1_u4etu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_3d4lx")
+
+[node name="StaticBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CapsuleShape3D_3yxxk")
