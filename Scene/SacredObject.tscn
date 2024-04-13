@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvexvcnax5fl"]
+
+[ext_resource type="Script" path="res://Script/SacredObject.gd" id="1_nksyi"]
+[ext_resource type="PackedScene" uid="uid://7x6xguqalvkv" path="res://Models/SacredObject.glb" id="1_xe1q1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5sd30"]
+height = 4.738
+radius = 12.3633
+
+[node name="SacredObject" type="Node3D"]
+script = ExtResource("1_nksyi")
+
+[node name="SacredObject_Model" parent="." instance=ExtResource("1_xe1q1")]
+
+[node name="Area" type="Area3D" parent="SacredObject_Model"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape3D" parent="SacredObject_Model/Area"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_5sd30")
+
+[connection signal="area_entered" from="SacredObject_Model/Area" to="." method="_on_area_area_entered"]
