@@ -17,6 +17,5 @@ func game_over():
 
 func _on_area_area_entered(area):
 	health -= 1
-	print(health)
 	if area.is_in_group("enemy"):
-		area.queue_free();
+		area.get_parent()._attacked_sacred_object();

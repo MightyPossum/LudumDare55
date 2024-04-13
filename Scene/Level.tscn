@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bycw2g4fan36b"]
+[gd_scene load_steps=13 format=3 uid="uid://bycw2g4fan36b"]
 
 [ext_resource type="PackedScene" uid="uid://bnowhac7nlhg6" path="res://Models/floor.glb" id="1_grqmb"]
+[ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_qpnpm"]
 [ext_resource type="PackedScene" uid="uid://jushqoahplno" path="res://Models/enemy.glb" id="2_8mm4q"]
 [ext_resource type="PackedScene" uid="uid://bnxonel36v2ul" path="res://Models/Portal.glb" id="3_ars2h"]
 [ext_resource type="PackedScene" uid="uid://7ty24bk3b1g1" path="res://Models/box.glb" id="4_44npu"]
@@ -21,6 +22,7 @@ _data = {
 point_count = 11
 
 [node name="Map1" type="Node3D"]
+script = ExtResource("1_qpnpm")
 
 [node name="MapEnvironmentContainer" type="Node3D" parent="."]
 metadata/_edit_lock_ = true

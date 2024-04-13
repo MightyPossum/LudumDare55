@@ -14,4 +14,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_3d_area_entered(area):
 	if area.is_in_group("projectile"):
-		health -= area.damage
+		health -= area.damage;
+
+func _attacked_sacred_object():
+	get_parent().current_number_of_enemies -= 1
+	queue_free();
