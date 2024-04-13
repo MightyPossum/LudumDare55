@@ -1,15 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://bycw2g4fan36b"]
+[gd_scene load_steps=11 format=3 uid="uid://bycw2g4fan36b"]
 
 [ext_resource type="PackedScene" uid="uid://bnowhac7nlhg6" path="res://Models/floor.glb" id="1_grqmb"]
 [ext_resource type="PackedScene" uid="uid://jushqoahplno" path="res://Models/enemy.glb" id="2_8mm4q"]
 [ext_resource type="PackedScene" uid="uid://bnxonel36v2ul" path="res://Models/Portal.glb" id="3_ars2h"]
 [ext_resource type="PackedScene" uid="uid://7ty24bk3b1g1" path="res://Models/box.glb" id="4_44npu"]
 [ext_resource type="PackedScene" uid="uid://7x6xguqalvkv" path="res://Models/SacredObject.glb" id="5_1r7wo"]
-[ext_resource type="PackedScene" uid="uid://ewyk6a5sfhxt" path="res://Scene/EnemyPath.tscn" id="6_sp8om"]
+[ext_resource type="Script" path="res://Script/EnemyPath.gd" id="6_u3jm2"]
+[ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="7_rx2go"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="7_x51ax"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w11t5"]
 size = Vector3(66, 1.295, 66.645)
+
+[sub_resource type="Curve3D" id="Curve3D_3b664"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -78, 12, 5, -7, 0, 10, 7, 0, -10, -46, 12, -20, 2.1, 0, -6.6, -2.1, 0, 6.6, -33, 12, -55, -17.8, 0, 1, 17.8, 0, -1, 7, 12, -79, 3, 8, -13, -3, -8, 13, 27, 12, -54, 6, 3, -18, -6, -3, 18, 24, 12, -2, 4, 5, -17, -4, -5, 17, 36, 12, 62, -6, 0, -6, 6, 0, 6, 35, 12, 90, -9, 0, 7, 9, 0, -7, 68.9652, 12, 92.3626, -10, 0, 14, 10, 0, -14, 67.1728, 12, 37.2457, 0, 0, 0, 0, 0, 0, 86.6653, 12, 29.4039),
+"tilts": PackedFloat32Array(1.5708, -3.05433, 0, 0, 0, 0, 1.74533, 0, 0, 0, 0)
+}
+point_count = 11
 
 [node name="Map1" type="Node3D"]
 
@@ -122,7 +130,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.255
 [node name="SacredObject" parent="MapEnvironmentContainer" instance=ExtResource("5_1r7wo")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 87, 12, 30)
 
-[node name="Path1" parent="." instance=ExtResource("6_sp8om")]
+[node name="Path1" type="Path3D" parent="."]
+curve = SubResource("Curve3D_3b664")
+script = ExtResource("6_u3jm2")
+enemy1scene = ExtResource("7_rx2go")
 
 [node name="Player" parent="." instance=ExtResource("7_x51ax")]
 transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, -76.4, 6.2, 0)
