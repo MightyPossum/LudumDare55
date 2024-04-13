@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://drgbmudxlp8v1"]
+[gd_scene load_steps=5 format=3 uid="uid://drgbmudxlp8v1"]
+
+[ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="1_3ofj3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nbkpp"]
+size = Vector3(60, 2, 60)
 
 [sub_resource type="BoxMesh" id="BoxMesh_u7y6x"]
+size = Vector3(60, 2, 60)
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_hwdlr"]
+height = 21.802
+
+[node name="Main" type="Node3D"]
 
 [node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_nbkpp")
@@ -14,3 +22,14 @@ shape = SubResource("BoxShape3D_nbkpp")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_u7y6x")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.8279, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_3ofj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28758, 2.28476, 3.20322)
+
+[node name="A thing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228794, 0, -5.14202)
+mesh = SubResource("CylinderMesh_hwdlr")
