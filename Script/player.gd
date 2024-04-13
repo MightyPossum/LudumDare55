@@ -7,6 +7,9 @@ extends CharacterBody3D
 
 var paused = false
 
+
+var speed = 25.0
+var sprint = 30.0
 const SPEED = 25.0
 const ACCELERATION = 100.0
 
@@ -74,7 +77,14 @@ func _movment(delta: float) -> Vector3:
 	move_direction = Input.get_vector("Move_Left", "Move_Right", "Move_Up", "Move_Down")
 	var _forward: Vector3 = camera.global_transform.basis * Vector3(move_direction.x, 0, move_direction.y)
 	var walk_direction: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
-	move_velocity = move_velocity.move_toward(walk_direction * SPEED * walk_direction.length(), ACCELERATION * delta)
+	
+	if Input.is_action_pressed("Sprint"):
+		speed = sprint
+	else:
+		speed = SPEED
+		
+	move_velocity = move_velocity.move_toward(walk_direction * speed * walk_direction.length(), ACCELERATION * delta)
+	
 	return move_velocity
 
 func _gravity(delta: float) -> Vector3:
