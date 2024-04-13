@@ -41,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				anim_player.play("Attack")				
 				if anim_player.animation_finished:
 					var projectile = projectileModel.instantiate()
-					%Ground.add_child(projectile)
+					get_parent().add_child(projectile)
 					projectile.global_position = $Camera/staff/projectileSpawn.global_position
 					projectile.rotation = camera.rotation
 					
