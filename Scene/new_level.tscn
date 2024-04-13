@@ -1,20 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1bwk1w7jb01u"]
+[gd_scene load_steps=8 format=3 uid="uid://b4s8unn15xlkv"]
 
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="1_5x2oo"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_ptkri"]
 [ext_resource type="PackedScene" uid="uid://bnxonel36v2ul" path="res://Models/Portal.glb" id="2_lesf0"]
 [ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="2_ol02k"]
-[ext_resource type="MeshLibrary" uid="uid://culqtppbxpwf6" path="res://tiles.tres" id="3_ft7mc"]
+[ext_resource type="MeshLibrary" uid="uid://bu2ve4r5s20j5" path="res://tiles.tres" id="3_ft7mc"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="5_hbii3"]
 
 [sub_resource type="Curve3D" id="Curve3D_gt3bj"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15.6704, -10.4814, 272.329, 0, 0, 0, 0, 0, 0, -42.199, -40.9161, 259.251, 0, 0, 0, 0, 0, 0, -45.0797, -46.9684, 155.188, 0, 0, 0, 0, 0, 0, -56.793, -17.0735, 126.832, 0, 0, 0, 0, 0, 0, -65.8769, 7.12648, 103.936, 0, 0, 0, 0, 0, 0, -75.7556, 28.9249, 83.0629, 0, 0, 0, 0, 0, 0, -82.4549, 41.302, 71.0513, 0, 0, 0, 0, 0, 0, -85.1706, 50.5387, 62.4227, 0, 0, 0, 0, 0, 0, -85.3339, 54.9723, 58.4484, 0, 0, 0, 0, 0, 0, -84.7094, 63.6547, 50.804, 0, 0, 0, 0, 0, 0, -88.9793, 77.8791, 37.5031),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16, 15, 270, 12.5, -5.4, -6.5, -12.5, 5.4, 6.5, -47, 14, 259, 2, 0, 34, -2, 0, -34, -70, 15, 56, 0, 0, 0, 0, 0, 0, -64, 15, 10, 0, 0, 0, 0, 0, 0, -68, 15, -37, 0, 0, 0, 0, 0, 0, -94, 15, -37, 0, 0, 0, 0, 0, 0, -144, 15, -41, 0, 0, 0, 0, 0, 0, -144, 15, -92, 0, 0, 0, 0, 0, 0, -125, 15, -125, 0, 0, 0, 0, 0, 0, -40, 15, -120, 0, 0, 0, 0, 0, 0, -46, 35, -238),
+"tilts": PackedFloat32Array(0, 0, 2.87979, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 11
 
-[node name="Map2" type="Node3D" node_paths=PackedStringArray("pathNodes")]
+[node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
 script = ExtResource("1_ptkri")
 enemyScenes = Array[PackedScene]([ExtResource("2_ol02k"), ExtResource("2_ol02k"), ExtResource("2_ol02k")])
 pathNodes = [NodePath("Path1"), NodePath("Path1"), NodePath("Path1")]
