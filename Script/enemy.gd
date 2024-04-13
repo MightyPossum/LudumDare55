@@ -23,6 +23,7 @@ func _attacked_sacred_object():
 func _on_area_3d_body_entered(body:Node3D):
 	if body.is_in_group("projectile"):
 		health -= body.damage;
+		body.queue_free();
 		if health <= 0:
 			_enemy_death();
 
