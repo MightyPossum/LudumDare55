@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bycw2g4fan36b"]
+[gd_scene load_steps=12 format=3 uid="uid://bycw2g4fan36b"]
 
 [ext_resource type="PackedScene" uid="uid://bnowhac7nlhg6" path="res://Models/floor.glb" id="1_grqmb"]
 [ext_resource type="PackedScene" uid="uid://jushqoahplno" path="res://Models/enemy.glb" id="2_8mm4q"]
 [ext_resource type="PackedScene" uid="uid://bnxonel36v2ul" path="res://Models/Portal.glb" id="3_ars2h"]
 [ext_resource type="PackedScene" uid="uid://7ty24bk3b1g1" path="res://Models/box.glb" id="4_44npu"]
 [ext_resource type="PackedScene" uid="uid://7x6xguqalvkv" path="res://Models/SacredObject.glb" id="5_1r7wo"]
+[ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="5_becxh"]
 [ext_resource type="Script" path="res://Script/EnemyPath.gd" id="6_u3jm2"]
 [ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="7_rx2go"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="7_x51ax"]
@@ -127,8 +128,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.744
 [node name="box6" parent="MapEnvironmentContainer" instance=ExtResource("4_44npu")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.25586, 17.0705, 64.8319)
 
+[node name="SacredObject2" parent="MapEnvironmentContainer" instance=ExtResource("5_becxh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 87, 12, 30)
+
 [node name="SacredObject" parent="MapEnvironmentContainer" instance=ExtResource("5_1r7wo")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 87, 12, 30)
+visible = false
 
 [node name="Path1" type="Path3D" parent="."]
 curve = SubResource("Curve3D_3b664")
