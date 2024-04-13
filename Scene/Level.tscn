@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://7ty24bk3b1g1" path="res://Models/box.glb" id="4_44npu"]
 [ext_resource type="PackedScene" uid="uid://7x6xguqalvkv" path="res://Models/SacredObject.glb" id="5_1r7wo"]
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="5_becxh"]
-[ext_resource type="Script" path="res://Script/EnemyPath.gd" id="6_u3jm2"]
 [ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="7_rx2go"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="7_x51ax"]
 [ext_resource type="PackedScene" uid="uid://cbygftrbf55kt" path="res://Scene/tower.tscn" id="10_w6ngj"]
@@ -21,8 +20,24 @@ _data = {
 }
 point_count = 11
 
-[node name="Map1" type="Node3D"]
+[sub_resource type="Curve3D" id="Curve3D_qcbpf"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -78, 7, 6, 0, 0, 0, 0, 0, 0, -51.8829, 7, 22.9317, 0, 0, 0, 0, 0, 0, -26.4008, 7, 34.4325, 0, 0, 0, 0, 0, 0, -26.8518, 7, 62.8463, 0, 0, 0, 0, 0, 0, -22.3417, 7, 89.2305, 0, 0, 0, 0, 0, 0, -3.85021, 7, 92.8385, 0, 0, 0, 0, 0, 0, 4.71901, 7, 93.5151, 0, 0, 0, 0, 0, 0, 7.87611, 7, 68.9349, 0, 0, 0, 0, 0, 0, 7.87611, 7, 45.7078, 0, 0, 0, 0, 0, 0, 6.7486, 7, 29.9224, 0, 0, 0, 0, 0, 0, 15.0923, 7, 22.2552, 0, 0, 0, 0, 0, 0, 18.2494, 7, -21.0419, 0, 0, 0, 0, 0, 0, 22.534, 7, -45.171, 0, 0, 0, 0, 0, 0, 27.0441, 7, -69.0747, 0, 0, 0, 0, 0, 0, 32.4563, 7, -81.252, 0, 0, 0, 0, 0, 0, 49.1437, 7, -83.507, 0, 0, 0, 0, 0, 0, 62.674, 7, -80.5755, 0, 0, 0, 0, 0, 0, 70.5668, 7, -58.9269, 0, 0, 0, 0, 0, 0, 78.4595, 7, -13.6002, 0, 0, 0, 0, 0, 0, 78.4595, 7, 13.4605, 0, 0, 0, 0, 0, 0, 85.2246, 7, 28.5694),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 21
+
+[sub_resource type="Curve3D" id="Curve3D_6wx3s"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -78, 7, 4, -2, 1, 6, 2, -1, -6, -44.8923, 7, 3.31272, -4, 1, 4, 4, -1, -4, -46.2453, 7, -16.5318, -13, 0, 0, 13, 0, 0, -15.5765, 7, -17.8848, -17, -1, -6, 17, 1, 6, 6.29756, 7, -15.4043, 1, 0, -9, -1, 0, 9, 11.0332, 7, 1.95968, -9, 1, 0, 9, -1, 0, 34.4858, 7, 6.92081, -8, 0, -3, 8, 0, 3, 54.1048, 7, 14.8135, -2, 0, -4, 2, 0, 4, 69.6647, 7, 19.0981, 0, 0, 0, 0, 0, 0, 91, 7, 32),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.261799)
+}
+point_count = 10
+
+[node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
 script = ExtResource("1_qpnpm")
+enemyScenes = Array[PackedScene]([ExtResource("7_rx2go"), ExtResource("7_rx2go"), ExtResource("7_rx2go")])
+pathNodes = [NodePath("Path1"), NodePath("Path2"), NodePath("Path3")]
 
 [node name="MapEnvironmentContainer" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
@@ -137,8 +152,12 @@ visible = false
 [node name="Path1" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_3b664")
-script = ExtResource("6_u3jm2")
-enemy1scene = ExtResource("7_rx2go")
+
+[node name="Path2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_qcbpf")
+
+[node name="Path3" type="Path3D" parent="."]
+curve = SubResource("Curve3D_6wx3s")
 
 [node name="Player" parent="." instance=ExtResource("7_x51ax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.4, 6.2, 0)
