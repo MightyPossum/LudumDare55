@@ -10,7 +10,7 @@ var paused = false
 
 var speed = 25.0
 var sprint = 30.0
-const SPEED = 25.0
+const WALK_SPEED = 25.0
 const ACCELERATION = 100.0
 
 var jump_height: float = 3 
@@ -81,7 +81,7 @@ func _movment(delta: float) -> Vector3:
 	if Input.is_action_pressed("Sprint"):
 		speed = sprint
 	else:
-		speed = SPEED
+		speed = WALK_SPEED
 		
 	move_velocity = move_velocity.move_toward(walk_direction * speed * walk_direction.length(), ACCELERATION * delta)
 	
