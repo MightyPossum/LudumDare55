@@ -143,4 +143,4 @@ script = ExtResource("6_u3jm2")
 enemy1scene = ExtResource("7_rx2go")
 
 [node name="Player" parent="." instance=ExtResource("7_x51ax")]
-transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, -76.4, 6.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.4, 6.2, 0)
