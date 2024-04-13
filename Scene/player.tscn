@@ -1,13 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://cufr1tp0y32vk"]
+[gd_scene load_steps=8 format=3 uid="uid://cufr1tp0y32vk"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_mbj6f"]
+[ext_resource type="PackedScene" uid="uid://cawmbuih1xpq4" path="res://Models/staff.glb" id="2_4miyj"]
+[ext_resource type="PackedScene" uid="uid://bsh3x6jsj2htt" path="res://Scene/player_projectile.tscn" id="2_7evvj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afgrb"]
 
+[sub_resource type="Animation" id="Animation_vsikm"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera/staff:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.08366, 0.487418), Vector3(-0.356853, -1.2318, 1.26815), Vector3(0, -1.08366, 0.487418)]
+}
+
+[sub_resource type="Animation" id="Animation_oixly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera/staff:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.08366, 0.487418)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kl2bf"]
+_data = {
+"Attack": SubResource("Animation_vsikm"),
+"RESET": SubResource("Animation_oixly")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_mbj6f")
+projectileModel = ExtResource("2_7evvj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_afgrb")
 
 [node name="Camera" type="Camera3D" parent="."]
+
+[node name="staff" parent="Camera" instance=ExtResource("2_4miyj")]
+transform = Transform3D(0.413587, -0.219233, -0.883676, 0.468346, 0.883545, 0, 0.780767, -0.413866, 0.468099, 0.205059, -0.190251, -0.401963)
+
+[node name="projectileSpawn" type="Node3D" parent="Camera/staff"]
+transform = Transform3D(1, 1.49012e-08, -7.45058e-09, -4.47035e-08, 1, 0, 1.49012e-08, 8.9407e-08, 1, -0.00386354, 0.567892, 0.00809953)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kl2bf")
+}

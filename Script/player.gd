@@ -1,9 +1,13 @@
 extends CharacterBody3D
 
 @onready var camera: Camera3D = $Camera
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
+@export var projectileModel : PackedScene
 
 const SPEED = 5.0
 const ACCELERATION = 100.0
+
+
 
 var jump_height: float = 1 
 var camera_sensitivity: float = 1
@@ -30,6 +34,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		if mouse_captured: _rotate_camera()
 	if Input.is_action_just_pressed("Jump"): jumping = true
 	if Input.is_action_just_pressed("Exit"): get_tree().quit()
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				anim_player.play("Attack")				
+				if anim_player.animation_finished:
+					var projectile = projectileModel.instantiate()
+					%Ground.add_child(projectile)
+					projectile.global_position = $Camera/staff/projectileSpawn.global_position
+					projectile.rotation = camera.rotation
+					
+				
+				#spawn object
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

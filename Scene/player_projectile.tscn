@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsh3x6jsj2htt"]
+
+[ext_resource type="PackedScene" uid="uid://btcvtryown6fm" path="res://Models/PlayerProjectile.glb" id="1_054mp"]
+[ext_resource type="Script" path="res://Scene/player_projectile.gd" id="1_awr8g"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_akgkg"]
+radius = 1.1
+
+[node name="PlayerProjectile" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_awr8g")
+speed = 10
+decayTime = 2
+
+[node name="PlayerProjectile" parent="." instance=ExtResource("1_054mp")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0139637, 0.00803387, -0.0126297)
+shape = SubResource("SphereShape3D_akgkg")

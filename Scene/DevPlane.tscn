@@ -11,9 +11,10 @@ size = Vector3(60, 2, 60)
 [sub_resource type="CylinderMesh" id="CylinderMesh_hwdlr"]
 height = 21.802
 
-[node name="Main" type="Node3D"]
+[node name="map1" type="Node3D"]
 
 [node name="Ground" type="StaticBody3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
@@ -27,9 +28,9 @@ skeleton = NodePath("../CollisionShape3D")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.8279, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_3ofj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28758, 2.28476, 3.20322)
-
 [node name="A thing" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228794, 0, -5.14202)
 mesh = SubResource("CylinderMesh_hwdlr")
+
+[node name="Player" parent="." instance=ExtResource("1_3ofj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27849, 2.10166, -0.00967216)
