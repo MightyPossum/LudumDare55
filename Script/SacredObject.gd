@@ -13,9 +13,15 @@ func _process(delta):
 	pass
 
 func game_over():
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_file("res://Scene/menues/game_over_menu.tscn")
 
 func _on_area_area_entered(area):
-	health -= 1
+	
 	if area.is_in_group("enemy"):
 		area.get_parent()._attacked_sacred_object();
+		health -= 1;
+		print(health)
+	
+	if health <= 0:
+		game_over();

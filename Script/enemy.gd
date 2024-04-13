@@ -1,7 +1,7 @@
 extends PathFollow3D
 
-var health = 5
-@export var enemy_speed : int = 5
+@onready var health = get_node("/root/Map1").current_enemy_health
+@onready var enemy_speed : float = get_node("/root/Map1").current_enemy_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,5 +28,5 @@ func _on_area_3d_body_entered(body:Node3D):
 			_enemy_death();
 
 func _enemy_death():
-	get_parent().current_number_of_enemies -= 1
+	get_parent().get_parent().current_number_of_enemies -= 1
 	queue_free()
