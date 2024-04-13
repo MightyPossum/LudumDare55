@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @onready var camera: Camera3D = $Camera
-@onready var pause_menu = $CanvasLayer/PauseMenu
+@onready var pause_menu = $CanvasLayer/pause_menu
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @export var projectileModel : PackedScene
 
@@ -19,16 +19,15 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var jumping: bool = false
 var mouse_captured: bool = false
 
-var move_direction: Vector2 # Input direction for movement
-var look_direction: Vector2 # Input direction for look/aim
+var move_direction: Vector2
+var look_direction: Vector2
 
-var move_velocity: Vector3 # Walking velocity 
-var grav_velocity: Vector3 # Gravity velocity 
-var jump_velocity: Vector3 # Jumping velocity
+var grav_velocity: Vector3  
+var move_velocity: Vector3  
+var jump_velocity: Vector3 
 
 func _ready() -> void:
-	#capture_mouse()
-	pass
+	capture_mouse()
 
 func pauseMenu():
 	if paused:
@@ -45,7 +44,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		look_direction = event.relative * 0.001
 		if mouse_captured: _rotate_camera()
 	if Input.is_action_just_pressed("Jump"): jumping = true
-	#if Input.is_action_just_pressed("Exit"): get_tree().quit()
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

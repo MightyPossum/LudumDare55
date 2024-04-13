@@ -66,3 +66,5 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_b1xjl")]
+process_mode = 2
+visible = false

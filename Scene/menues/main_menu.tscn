@@ -31,6 +31,11 @@ alignment = 1
 layout_mode = 2
 alignment = 1
 
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "A GAME FOR THE AGES"
+
 [node name="Start" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
