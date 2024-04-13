@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bnxonel36v2ul"
-path="res://.godot/imported/Portal.glb-3db178380bd0ff86d15204cd15e1f899.scn"
+uid="uid://2h8hrx1hvcxa"
+path="res://.godot/imported/wallTile.glb-3f3379102e3911a36363513dd92d64ec.scn"
 
 [deps]
 
-source_file="res://Models/Portal.glb"
-dest_files=["res://.godot/imported/Portal.glb-3db178380bd0ff86d15204cd15e1f899.scn"]
+source_file="res://Models/wallTile.glb"
+dest_files=["res://.godot/imported/wallTile.glb-3f3379102e3911a36363513dd92d64ec.scn"]
 
 [params]
 
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"Portal.001": {
-"use_external/enabled": true,
-"use_external/path": ""
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
