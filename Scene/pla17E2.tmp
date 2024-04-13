@@ -65,4 +65,6 @@ libraries = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_b1xjl")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_b1xjl")]
+
+[editable path="CanvasLayer/PauseMenu"]

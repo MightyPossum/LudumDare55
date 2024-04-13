@@ -8,8 +8,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
+	
 func _get_number_of_enemies(wave_number : int) -> int:
 	var enemy_number
 	

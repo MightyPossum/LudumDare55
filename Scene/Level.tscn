@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bycw2g4fan36b"]
+[gd_scene load_steps=14 format=3 uid="uid://bycw2g4fan36b"]
 
 [ext_resource type="PackedScene" uid="uid://bnowhac7nlhg6" path="res://Models/floor.glb" id="1_grqmb"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_qpnpm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Script/EnemyPath.gd" id="6_u3jm2"]
 [ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="7_rx2go"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="7_x51ax"]
+[ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="11_pqyky"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w11t5"]
 size = Vector3(66, 1.295, 66.645)
@@ -144,3 +145,6 @@ enemy1scene = ExtResource("7_rx2go")
 
 [node name="Player" parent="." instance=ExtResource("7_x51ax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.4, 6.2, 0)
+
+[node name="PauseMenu" parent="Player" instance=ExtResource("11_pqyky")]
+visible = false
