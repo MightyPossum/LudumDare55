@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsh3x6jsj2htt"]
+[gd_scene load_steps=13 format=3 uid="uid://bsh3x6jsj2htt"]
 
 [ext_resource type="Script" path="res://Script/player_projectile.gd" id="1_bgsr5"]
+[ext_resource type="AudioStream" uid="uid://cbxpgkggsgp2b" path="res://Audio/spell1.wav" id="2_dqwub"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0uj5"]
 resource_name = "Material"
@@ -108,3 +109,6 @@ draw_pass_1 = SubResource("BoxMesh_hca8o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0139637, 0.00803387, -0.0126297)
 shape = SubResource("SphereShape3D_akgkg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_dqwub")
