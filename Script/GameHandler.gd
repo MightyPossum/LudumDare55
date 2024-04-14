@@ -25,7 +25,7 @@ var current_number_of_enemies : int;
 var spawning : bool = true;
 var round_wait_delay : float = 30-spawning_delay
 
-func _set_wave_details(wave_number : int) -> void:	
+func _set_wave_details(wave_number : int) -> void:
 	if wave_number < 5:
 		late_wave_incrementer = wave_number*2
 	
@@ -44,8 +44,6 @@ func _set_wave_details(wave_number : int) -> void:
 		spawning_delay = 0.183
 
 	current_enemy_health = int(5 + late_wave_incrementer)
-
-	%save_handler.save_game()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -95,8 +93,9 @@ func _spawn_new_enemy():
 		%next_wave_timer.visible = true
 		%enemies_left_hud.visible = false
 		wave_timer = round_wait_delay+round(spawning_delay)
-		await get_tree().create_timer(round_wait_delay).timeout
 		GLOBALVARIABLES.current_wave += 1
+		%save_handler.save_game()
+		await get_tree().create_timer(round_wait_delay).timeout
 		_prepare_wave();
 		spawning = false
 	else:
