@@ -192,6 +192,8 @@ cull_mask = 524288
 
 [node name="jumpPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_r74nu")
+volume_db = -15.0
+pitch_scale = 0.6
 
 [node name="walkPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_w3t2q")

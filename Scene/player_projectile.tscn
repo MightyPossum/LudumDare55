@@ -61,7 +61,7 @@ gravity = Vector3(0, -5, 0)
 scale_min = 0.02
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_pv1wn")
-color = Color(1, 1, 0, 1)
+color = Color(0, 0.552941, 0.788235, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfbmh"]
 vertex_color_use_as_albedo = true
@@ -75,7 +75,7 @@ emission_sphere_radius = 1.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.01
 scale_max = 0.1
-color = Color(1, 0.996078, 0, 1)
+color = Color(0.22, 0.558, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_akgkg"]
 radius = 1.1
