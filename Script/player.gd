@@ -11,7 +11,7 @@ var sprint = 25.0
 const WALK_SPEED = 20.0
 const ACCELERATION = 100.0
 
-var jump_height: float = 2 
+@export var jump_height: float = 2 
 var camera_sensitivity: float = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

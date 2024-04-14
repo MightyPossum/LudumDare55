@@ -34,6 +34,7 @@ func _on_area_3d_body_entered(body:Node3D):
 
 func _enemy_death():
 	get_parent().get_parent().current_number_of_enemies -= 1
+	GLOBALVARIABLES.amount_of_cash += randi_range(80, 110)
 	var particles = enemyDeathParticles.instantiate()
 	get_parent().add_child(particles)
 	particles.global_position = global_position
