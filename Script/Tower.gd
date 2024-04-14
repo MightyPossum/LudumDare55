@@ -30,10 +30,8 @@ func _attack(rtarget, delta):
 func _on_area_3d_area_entered(area):
 	if current_enemy == null:
 		current_enemy = area
-		
+	
 	enemies_in_range.append(area)
-	print(enemies_in_range.size())
 
 func _on_area_3d_area_exited(area):
 	enemies_in_range.erase(area)
-	print(enemies_in_range.size())

@@ -20,16 +20,11 @@ var spawning : bool = true;
 var round_wait_delay : int = 2
 
 func _set_wave_details(wave_number : int) -> void:	
+	if wave_number < 5:
+		late_wave_incrementer = wave_number*2
 	
-	if wave_number <= 5:
-		late_wave_incrementer += 2.0
-	elif wave_number%5 == 0:
-		late_wave_incrementer += 2.0
-
-	if wave_number == 1:
-		late_wave_incrementer += 6
-	elif wave_number == 10:
-		late_wave_incrementer -= 6
+	if wave_number >= 5:
+		late_wave_incrementer = wave_number/5
 
 	enemies_to_spawn = int(wave_number * (4 + (late_wave_incrementer/2)))
 
