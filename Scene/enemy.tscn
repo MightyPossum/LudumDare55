@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7t64vdxbr4gk"]
+[gd_scene load_steps=15 format=3 uid="uid://b7t64vdxbr4gk"]
 
 [ext_resource type="Script" path="res://Script/enemy.gd" id="1_jjda4"]
 [ext_resource type="PackedScene" uid="uid://bnigurtmebslb" path="res://Scene/explosion.tscn" id="2_4s3f2"]
@@ -9,6 +9,12 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yxxk"]
 radius = 5.0
 height = 10.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vqki8"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftnwa"]
+bg_color = Color(0.65098, 0, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xwacd"]
 emission_shape = 1
@@ -81,6 +87,22 @@ shape = SubResource("CapsuleShape3D_3yxxk")
 
 [node name="enemy" parent="Area3D" instance=ExtResource("2_n2f7h")]
 transform = Transform3D(-4.22, 0, 3.68924e-07, 0, 4.22, 0, -3.68924e-07, 0, -4.22, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(2.72018, 0, 0, 0, 1.21698, 0, 0, 0, 1, 0, 6.28981, 0)
+texture = SubResource("ViewportTexture_vqki8")
+region_enabled = true
+region_rect = Rect2(-0.25, -0.430386, 226.397, 28.4868)
+
+[node name="SubViewport" type="SubViewport" parent="Area3D/Sprite3D"]
+transparent_bg = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Area3D/Sprite3D/SubViewport"]
+offset_right = 225.0
+offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ftnwa")
+value = 50.0
+show_percentage = false
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09604, 0)

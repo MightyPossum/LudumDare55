@@ -19,6 +19,7 @@ var camera_sensitivity: float = 1
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var jumping: bool = false
+var shooting : bool = false
 var mouse_captured: bool = false
 
 var move_direction: Vector2
@@ -26,7 +27,7 @@ var look_direction: Vector2
 
 var grav_velocity: Vector3  
 var move_velocity: Vector3  
-var jump_velocity: Vector3 
+var jump_velocity: Vector3
 
 func _ready() -> void:
 	anim_player.play("idle")
@@ -38,21 +39,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if mouse_captured: _rotate_camera()
 	if Input.is_action_just_pressed("Jump"): 
 		jumping = true
-		if is_on_floor:
-			$jumpPlayer.play()
-	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				anim_player.play("Attack")				
-				if anim_player.animation_finished:
-					var projectile = projectileModel.instantiate()
-					get_parent().add_child(projectile)
-					projectile.global_position = %projectileSpawn.global_position
-					projectile.rotation = camera.rotation
-					
-				
-				#spawn object
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -87,16 +73,32 @@ func _gravity(delta: float) -> Vector3:
 
 func _jump(delta: float) -> Vector3:
 	if jumping:
-		if is_on_floor(): jump_velocity = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+		if is_on_floor(): 
+			jump_velocity = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+			$jumpPlayer.play()
 		jumping = false
 		return jump_velocity
+	
 	jump_velocity = Vector3.ZERO if is_on_floor() else jump_velocity.move_toward(Vector3.ZERO, gravity * delta)
+	
 	return jump_velocity
 	
 func _process(_delta: float) -> void:
 	timer += _delta
 	staffCam.global_position = camera.global_position
 	staffCam.rotation = camera.rotation
+
+	if Input.is_action_pressed('shoot') && !shooting:
+	#if event is InputEventMouseButton: && event.button_index == MOUSE_BUTTON_LEFT && event.pressed && !shooting:
+		anim_player.play("Attack")
+		var projectile = projectileModel.instantiate()
+		projectile.damage = 0.5
+		get_parent().add_child(projectile)
+		projectile.global_position = %projectileSpawn.global_position
+		projectile.rotation = camera.rotation
+		shooting = true
+		await get_tree().create_timer(.8).timeout
+		shooting = false		
 
 func _physics_process(delta):
 	velocity = _movment(delta) + _gravity(delta) + _jump(delta)
