@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1bwk1w7jb01u"]
+[gd_scene load_steps=16 format=3 uid="uid://b1bwk1w7jb01u"]
 
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="1_5x2oo"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_ptkri"]
@@ -7,6 +7,7 @@
 [ext_resource type="MeshLibrary" uid="uid://culqtppbxpwf6" path="res://tiles.tres" id="3_ft7mc"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="5_hbii3"]
 [ext_resource type="PackedScene" uid="uid://cbygftrbf55kt" path="res://Scene/tower.tscn" id="7_w5q3k"]
+[ext_resource type="Script" path="res://Script/save_game_system/save_game.gd" id="8_e55l6"]
 
 [sub_resource type="Curve3D" id="Curve3D_gt3bj"]
 _data = {
@@ -95,3 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.0692, 20.9519, 160.909)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6paxs")
+
+[node name="save_handler" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_e55l6")

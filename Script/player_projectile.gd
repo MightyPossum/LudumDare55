@@ -7,7 +7,6 @@ var damage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = decayTime
-	print(global_position)
 	pass # Replace with function body.
 
 
