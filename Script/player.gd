@@ -72,10 +72,8 @@ func _movment(delta: float) -> Vector3:
 	
 	if Input.is_action_pressed("Sprint"):
 		speed = SPRINT
-		print(timer)
 	else:
 		speed = WALK_SPEED
-		print(timer)
 		
 		timer = 0
 	move_velocity = move_velocity.move_toward(walk_direction * speed * walk_direction.length(), ACCELERATION * delta)
