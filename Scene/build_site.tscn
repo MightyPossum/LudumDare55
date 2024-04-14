@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/build_site.gd" id="1_5wphn"]
 [ext_resource type="PackedScene" uid="uid://bf4yac0sjgnod" path="res://Models/TowerBuild.glb" id="1_po7le"]
-[ext_resource type="PackedScene" path="res://Scene/newTower.tscn" id="3_6rund"]
+[ext_resource type="PackedScene" uid="uid://c4vhguexb06se" path="res://Scene/newTower.tscn" id="3_6rund"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vkw8s"]
 size = Vector3(3.56674, 0.567871, 4.51929)
@@ -23,6 +23,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110733, 0.216064, 0.076538
 shape = SubResource("BoxShape3D_vkw8s")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.912991, 0)

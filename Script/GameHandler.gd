@@ -50,6 +50,7 @@ func _set_wave_details(wave_number : int) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(GLOBALVARIABLES.amount_of_cash)
 	wave_countdown = true
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
@@ -73,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	
 	if wave_countdown:
 		timer_counter += delta
-		print(int(timer_counter))
+		#print(int(timer_counter))
 		%next_wave_countdown.text = str(int(wave_timer-timer_counter))
 		if timer_counter >= wave_timer:
 			wave_countdown = false
