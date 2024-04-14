@@ -101,7 +101,12 @@ func _jump(delta: float) -> Vector3:
 	return jump_velocity
 	
 func _process(_delta: float) -> void:
-	staffCam.transform = camera.transform
+	staffCam.global_position = camera.global_position
+	staffCam.rotation = camera.rotation
+	print("StaffCam")
+	print(staffCam.global_position)
+	print("Camera")
+	print(camera.global_position)
 	if Input.is_action_just_pressed("Exit"):
 		pauseMenu()
 		release_mouse()

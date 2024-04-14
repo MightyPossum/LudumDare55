@@ -1,13 +1,8 @@
-extends CharacterBody3D
-@export var speed : int
-@export var decayTime : int
-var timer
-var damage = 1
+extends Node3D
+var timer = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer = decayTime
-	print(global_position)
 	pass # Replace with function body.
 
 
@@ -16,5 +11,4 @@ func _process(delta):
 	timer -= delta
 	if timer <= 0:
 		queue_free()
-	velocity = transform.basis.z * speed
-	move_and_collide(-velocity*delta)
+	pass
