@@ -1,7 +1,6 @@
 extends Control
 
 func _on_retry_pressed():
-	print('TEST')
 	get_tree().change_scene_to_file("res://Scene/new_level.tscn")
 
 
