@@ -4,9 +4,8 @@ class_name GameData
 @export var date: String = ""
 @export var array_1: Array = []
 @export var array_2: Array = []
-@export var array_3: Array = []
+@export var build_sites: Array = []
 @export var array_4: Array = []
-
 
 func save_date(value: String) -> void: ## Left as an example of ways to expand the save function, everything doesn't need to be an array
 	date = value
@@ -20,7 +19,7 @@ func save_array(lov_number: int, save_value: Array) -> void:
 		1:
 			array_2 = save_value
 		2:
-			array_3 = save_value
+			build_sites = save_value
 		3:
 			array_4 = save_value
 
@@ -31,7 +30,7 @@ func load_array(lov_number: int) -> Array:
 		1:
 			return array_2
 		2:
-			return array_3
+			return build_sites
 		3:
 			return array_4
 		_:

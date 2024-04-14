@@ -104,120 +104,123 @@ script = ExtResource("8_e55l6")
 
 [node name="BuildSites" type="Node3D" parent="."]
 
-[node name="build_site" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_1" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.9816, 13.179, -115.169)
 
-[node name="build_site2" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_2" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.4382, 13.179, -153.402)
 
-[node name="build_site3" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_3" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2721, 18.179, -112.667)
 
-[node name="build_site4" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_4" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1282, 13.179, -128.453)
 
-[node name="build_site5" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_5" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4879, 13.179, -130.344)
 
-[node name="build_site6" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_6" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.3743, 18.179, -123.588)
 
-[node name="build_site7" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_7" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.1176, 13.179, -70.8034)
 
-[node name="build_site8" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_8" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.6992, 13.179, -80.1005)
 
-[node name="build_site9" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_9" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.4, 13.179, -67.9221)
 
-[node name="build_site10" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_10" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.0587, 13.179, -55.353)
 
-[node name="build_site11" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_11" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.3037, 13.179, -8.00823)
 
-[node name="build_site12" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_12" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.9896, 13.179, 24.6191)
 
-[node name="build_site13" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_13" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73771, 13.179, -71.0199)
 
-[node name="build_site14" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_14" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.7073, 13.179, -37.53)
 
-[node name="build_site15" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_15" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.832, 13.179, 18.3096)
 
-[node name="build_site16" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_16" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.2106, 13.179, 77.7381)
 
-[node name="build_site17" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_17" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.587, 13.179, 149.285)
 
-[node name="build_site18" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_18" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.692, 13.179, 179.77)
 
-[node name="build_site19" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_19" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3278, 13.179, 166.546)
 
-[node name="build_site20" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_20" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9444, 13.179, 167.923)
 
-[node name="build_site21" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_21" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.32, 18.179, -38.5709)
 
-[node name="build_site22" parent="BuildSites" instance=ExtResource("9_8gee0")]
+[node name="build_site_22" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6807, 18.179, 6.68869)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("9_ba0vj")
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="next_wave_timer" type="Panel" parent="CanvasLayer/HUD"]
+[node name="next_wave_timer" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 340.0
-offset_top = 38.0
-offset_right = 804.0
-offset_bottom = 129.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -245.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 107.0
+grow_horizontal = 2
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/HUD/next_wave_timer"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 8.0
-offset_right = 272.0
-offset_bottom = 80.0
+[node name="Label" type="Label" parent="CanvasLayer/next_wave_timer"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 277.0
+offset_bottom = 78.0
 theme_override_font_sizes/font_size = 50
 text = "Next wave:"
 vertical_alignment = 1
 
-[node name="next_wave_countdown" type="Label" parent="CanvasLayer/HUD/next_wave_timer"]
+[node name="next_wave_countdown" type="Label" parent="CanvasLayer/next_wave_timer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 323.0
+layout_mode = 1
+offset_left = 357.0
 offset_top = 8.0
 offset_right = 415.0
-offset_bottom = 80.0
+offset_bottom = 77.0
 theme_override_font_sizes/font_size = 50
 text = "00
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="enemies_left_hud" type="Panel" parent="CanvasLayer/HUD"]
+[node name="enemies_left_hud" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 340.0
-offset_top = 38.0
-offset_right = 804.0
-offset_bottom = 129.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -244.5
+offset_top = 20.0
+offset_right = 199.5
+offset_bottom = 107.0
+grow_horizontal = 2
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/HUD/enemies_left_hud"]
+[node name="Label" type="Label" parent="CanvasLayer/enemies_left_hud"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 8.0
@@ -227,7 +230,7 @@ theme_override_font_sizes/font_size = 50
 text = "Enemies Left:"
 vertical_alignment = 1
 
-[node name="enemies_left_count" type="Label" parent="CanvasLayer/HUD/enemies_left_hud"]
+[node name="enemies_left_count" type="Label" parent="CanvasLayer/enemies_left_hud"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 340.0
@@ -240,15 +243,14 @@ text = "00
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lives_hud" type="Panel" parent="CanvasLayer/HUD"]
+[node name="lives_hud" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 10.0
-offset_top = 38.0
+offset_top = 11.0
 offset_right = 110.0
-offset_bottom = 89.0
+offset_bottom = 62.0
 
-[node name="lives_left_label" type="Label" parent="CanvasLayer/HUD/lives_hud"]
+[node name="lives_left_label" type="Label" parent="CanvasLayer/lives_hud"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 63.0
@@ -258,7 +260,7 @@ text = "Lives:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lives_left_count" type="Label" parent="CanvasLayer/HUD/lives_hud"]
+[node name="lives_left_count" type="Label" parent="CanvasLayer/lives_hud"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 68.0
@@ -270,15 +272,19 @@ text = "00
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cash_hud" type="Panel" parent="CanvasLayer/HUD"]
+[node name="cash_hud" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 991.0
-offset_top = 38.0
-offset_right = 1137.0
-offset_bottom = 89.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_top = 11.0
+offset_right = -10.0
+offset_bottom = 62.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
 
-[node name="cash_amount" type="Label" parent="CanvasLayer/HUD/cash_hud"]
+[node name="cash_amount" type="Label" parent="CanvasLayer/cash_hud"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 120.0
@@ -288,7 +294,7 @@ text = "50000"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="cash_label" type="Label" parent="CanvasLayer/HUD/cash_hud"]
+[node name="cash_label" type="Label" parent="CanvasLayer/cash_hud"]
 layout_mode = 0
 offset_left = 116.0
 offset_right = 145.0
@@ -298,30 +304,29 @@ text = "$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="build_hud" type="Panel" parent="CanvasLayer/HUD"]
+[node name="build_hud" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
-layout_mode = 0
 offset_left = 385.0
 offset_top = 457.0
 offset_right = 772.0
 offset_bottom = 497.0
 
-[node name="build_text" type="Label" parent="CanvasLayer/HUD/build_hud"]
-layout_mode = 0
-offset_right = 231.0
-offset_bottom = 40.0
+[node name="build_text" type="Label" parent="CanvasLayer/build_hud"]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 230.0
+offset_bottom = 39.0
 text = "Press E to Build: "
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="cost_amount" type="Label" parent="CanvasLayer/HUD/build_hud"]
+[node name="cost_amount" type="Label" parent="CanvasLayer/build_hud"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 231.0
-offset_right = 387.0
-offset_bottom = 40.0
+offset_left = 230.0
+offset_top = -1.0
+offset_right = 386.0
+offset_bottom = 39.0
 text = "50000 $"
 vertical_alignment = 1
 
