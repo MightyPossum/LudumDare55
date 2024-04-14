@@ -1,7 +1,9 @@
 extends PathFollow3D
 
-@onready var health = get_node("/root/Map1").current_enemy_health
-@onready var enemy_speed : float = get_node("/root/Map1").current_enemy_speed
+@onready var health = get_node(GLOBALVARIABLES.gamehandler_path).current_enemy_health
+@onready var enemy_speed : float = get_node(GLOBALVARIABLES.gamehandler_path).current_enemy_speed
+@export var projectileParticles : PackedScene
+@export var enemyDeathParticles : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,10 +25,16 @@ func _attacked_sacred_object():
 func _on_area_3d_body_entered(body:Node3D):
 	if body.is_in_group("projectile"):
 		health -= body.damage;
+		var particles = projectileParticles.instantiate()
+		get_parent().add_child(particles)
+		particles.global_position = body.global_position
 		body.queue_free();
 		if health <= 0:
 			_enemy_death();
 
 func _enemy_death():
-	get_parent().get_parent().current_number_of_enemies -= 1
+	get_node(GLOBALVARIABLES.gamehandler_path)._enemy_died()
+	var particles = enemyDeathParticles.instantiate()
+	get_parent().add_child(particles)
+	particles.global_position = global_position
 	queue_free()

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dikjbndonn111"]
+
+[ext_resource type="Script" path="res://Scene/enemy_boom.gd" id="1_cfi8v"]
+
+[sub_resource type="Curve" id="Curve_r0xu0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.521583, 0.531618), -3.98603, -3.98603, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8xc7a"]
+curve = SubResource("Curve_r0xu0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ydpcb"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_8xc7a")
+color = Color(0.831373, 0, 0.0156863, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbway"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_a74kh"]
+material = SubResource("StandardMaterial3D_pbway")
+
+[node name="enemyBoom" type="Node3D"]
+script = ExtResource("1_cfi8v")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ydpcb")
+draw_pass_1 = SubResource("BoxMesh_a74kh")

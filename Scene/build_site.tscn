@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://0v60bqfmdn7s"]
+
+[ext_resource type="Script" path="res://Script/build_site.gd" id="1_5wphn"]
+[ext_resource type="PackedScene" uid="uid://bf4yac0sjgnod" path="res://Models/TowerBuild.glb" id="1_po7le"]
+[ext_resource type="PackedScene" uid="uid://c4vhguexb06se" path="res://Scene/newTower.tscn" id="3_6rund"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ma3sk"]
+height = 1.9394
+radius = 8.04592
+
+[node name="build_site" type="Node3D"]
+script = ExtResource("1_5wphn")
+
+[node name="TowerBuild" parent="." instance=ExtResource("1_po7le")]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.912991, 0)
+shape = SubResource("CylinderShape3D_ma3sk")
+
+[node name="Tower" parent="." instance=ExtResource("3_6rund")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="built1" from="." to="Tower" method="_on_build_site_built_1"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

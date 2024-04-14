@@ -3,8 +3,6 @@ extends Node
 const USER_DATA_PATH: String = "user://save/"
 const SAVE_FILE_NAME: String = "TheGameSave.tres"
 
-@onready var game_manager = %GameManager
-
 var game_data = GameData.new()
 var reset_in_progress: bool = false
 

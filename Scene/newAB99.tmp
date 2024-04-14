@@ -7,7 +7,7 @@
 [ext_resource type="MeshLibrary" uid="uid://culqtppbxpwf6" path="res://tiles.tres" id="3_ft7mc"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="5_hbii3"]
 [ext_resource type="Script" path="res://Script/save_game_system/save_game.gd" id="8_e55l6"]
-[ext_resource type="PackedScene" uid="uid://0v60bqfmdn7s" path="res://Scene/build_site.tscn" id="9_8gee0"]
+[ext_resource type="PackedScene" uid="uid://berxn37io6x1" path="res://Scene/build_site.tscn" id="9_8gee0"]
 [ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="9_vycus"]
 
 [sub_resource type="Curve3D" id="Curve3D_gt3bj"]
