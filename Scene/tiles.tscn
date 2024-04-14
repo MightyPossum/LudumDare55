@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ckyh0a045eirb"]
+[gd_scene load_steps=42 format=3 uid="uid://ckyh0a045eirb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62dax"]
 resource_name = "Material"
@@ -375,6 +375,9 @@ size = Vector3(5.18384, 5.03052, 1.47858)
 [sub_resource type="BoxShape3D" id="BoxShape3D_k8s0e"]
 size = Vector3(5.10565, 5.08005, 1.49292)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g65q0"]
+size = Vector3(1, 1.85059, 2.40631)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70ohs"]
 resource_name = "Material.002"
 cull_mode = 2
@@ -455,6 +458,7 @@ size = Vector3(1.27026, 0.67749, 5.02405)
 [node name="Tiles" type="Node3D"]
 
 [node name="groundTile" type="Node3D" parent="."]
+visible = false
 
 [node name="groundTile" type="MeshInstance3D" parent="groundTile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481985, 0)
@@ -469,6 +473,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0218363, -0.141708, 0.00225
 shape = SubResource("BoxShape3D_8hm52")
 
 [node name="wallTile" type="Node3D" parent="."]
+visible = false
 
 [node name="wallTile" type="MeshInstance3D" parent="wallTile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481985, 0)
@@ -487,6 +492,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87628, 0.523682, -0.0052533
 shape = SubResource("BoxShape3D_7yaua")
 
 [node name="cornerTile2" type="Node3D" parent="."]
+visible = false
 
 [node name="cornerTile" type="MeshInstance3D" parent="cornerTile2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481985, 0)
@@ -509,6 +515,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00228691, 0.493256, -1.867
 shape = SubResource("BoxShape3D_23pjd")
 
 [node name="grassTile2" type="Node3D" parent="."]
+visible = false
 
 [node name="grassTile" type="MeshInstance3D" parent="grassTile2"]
 mesh = SubResource("ArrayMesh_1qvn4")
@@ -552,8 +559,21 @@ shape = SubResource("BoxShape3D_qjads")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0226035, 2.48625, -1.93738)
 shape = SubResource("BoxShape3D_k8s0e")
 
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="stairsTile/Stairs/StaticBody3D"]
+transform = Transform3D(0.703109, -0.711082, 0, 0.711082, 0.703109, 0, 0, 0, 1, 1.54786, 1.53633, -0.0529369)
+shape = SubResource("BoxShape3D_g65q0")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="stairsTile/Stairs/StaticBody3D"]
+transform = Transform3D(0.703109, -0.711082, 0, 0.711082, 0.703109, 0, 0, 0, 1, 0.261896, 2.80527, -0.0276906)
+shape = SubResource("BoxShape3D_g65q0")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="stairsTile/Stairs/StaticBody3D"]
+transform = Transform3D(0.703109, -0.711082, 0, 0.711082, 0.703109, 0, 0, 0, 1, -0.977914, 4.00921, -0.0276906)
+shape = SubResource("BoxShape3D_g65q0")
+
 [node name="stairsTopTile" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0137053, 0, -0.0222368)
+visible = false
 
 [node name="stairsTop" type="MeshInstance3D" parent="stairsTopTile"]
 mesh = SubResource("ArrayMesh_bw51c")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbygftrbf55kt"]
+
+[ext_resource type="Script" path="res://Script/Tower.gd" id="1_357wo"]
+[ext_resource type="PackedScene" uid="uid://bvoc5h42jp8yf" path="res://Scene/player_projectile.tscn" id="2_oo4kd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7vvsp"]
+radius = 13.584
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xvjr7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_830qa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pe4y1"]
+radius = 0.307
+height = 0.945
+
+[node name="Tower" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_357wo")
+projectileModel = ExtResource("2_oo4kd")
+
+[node name="Range" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
+transform = Transform3D(10.19, 2.84217e-14, 0, 2.84217e-14, 10.19, 0, 0, 0, 10.19, -2.98023e-08, 1.68189, 0)
+shape = SubResource("SphereShape3D_7vvsp")
+
+[node name="Turret" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("CylinderMesh_xvjr7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Turret"]
+shape = SubResource("CylinderShape3D_830qa")
+
+[node name="Muzzle" type="MeshInstance3D" parent="Turret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67174, 0)
+mesh = SubResource("CapsuleMesh_pe4y1")
+skeleton = NodePath("../../Range")
+
+[connection signal="area_entered" from="Range" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Range" to="." method="_on_area_3d_area_exited"]

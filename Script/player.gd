@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
 @onready var camera: Camera3D = $Camera
+@onready var staffCam : Camera3D = %StaffCam
 @onready var pause_menu = $CanvasLayer/pause_menu
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @export var projectileModel : PackedScene
-
 var paused = false
 
 
@@ -30,6 +30,7 @@ var move_velocity: Vector3
 var jump_velocity: Vector3 
 
 func _ready() -> void:
+	anim_player.play("idle")
 	capture_mouse()
 
 func pauseMenu():
@@ -55,7 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				if anim_player.animation_finished:
 					var projectile = projectileModel.instantiate()
 					get_parent().add_child(projectile)
-					projectile.global_position = $Camera/staff/projectileSpawn.global_position
+					projectile.global_position = %projectileSpawn.global_position
 					projectile.rotation = camera.rotation
 					
 				
@@ -100,6 +101,12 @@ func _jump(delta: float) -> Vector3:
 	return jump_velocity
 	
 func _process(_delta: float) -> void:
+	staffCam.global_position = camera.global_position
+	staffCam.rotation = camera.rotation
+	print("StaffCam")
+	print(staffCam.global_position)
+	print("Camera")
+	print(camera.global_position)
 	if Input.is_action_just_pressed("Exit"):
 		pauseMenu()
 		release_mouse()
@@ -107,3 +114,9 @@ func _process(_delta: float) -> void:
 func _physics_process(delta):
 	velocity = _movment(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Attack":
+		anim_player.play("idle")
+	pass # Replace with function body.
