@@ -1,8 +1,10 @@
 class_name buildSite extends Node3D
 
 var player_in_area = false
-var built = false
+@export var built = false
 @export var cost_incrase = 1.5
+
+signal built1(built)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func build():
 	$Tower.show()
 	$TowerBuild.hide()
+	%Tower.built = true
 	built = true
 	
 func _on_area_3d_body_entered(body):
