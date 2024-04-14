@@ -1,6 +1,7 @@
 class_name buildSite extends Node3D
 
-var cost:int = 10
+var cost = GLOBALVARIABLES.tower_cost
+var cash = GLOBALVARIABLES.amount_of_cash
 var player_in_area = false
 var built = false
 
@@ -11,7 +12,10 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Use") and player_in_area == true:
 		if not built:
-			build()
+			if cost >= cash:
+				cash -= cost #Removes cash from global pool
+				cost * 1.5 #Cost increase every time a tower is built
+				build()
 
 func build():
 	$Tower.show()

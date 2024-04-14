@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://berxn37io6x1"]
+[gd_scene load_steps=6 format=3 uid="uid://0v60bqfmdn7s"]
 
 [ext_resource type="Script" path="res://Script/build_site.gd" id="1_5wphn"]
-[ext_resource type="PackedScene" uid="uid://cf84iul5qgjc8" path="res://Models/TowerBuild.glb" id="1_po7le"]
-[ext_resource type="PackedScene" uid="uid://c4vhguexb06se" path="res://Scene/newTower.tscn" id="3_6rund"]
+[ext_resource type="PackedScene" uid="uid://bf4yac0sjgnod" path="res://Models/TowerBuild.glb" id="1_po7le"]
+[ext_resource type="PackedScene" path="res://Scene/newTower.tscn" id="3_6rund"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vkw8s"]
 size = Vector3(3.56674, 0.567871, 4.51929)
