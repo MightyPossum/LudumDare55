@@ -73,10 +73,8 @@ func _movment(delta: float) -> Vector3:
 	
 	if Input.is_action_pressed("Sprint"):
 		speed = SPRINT
-		print(timer)
 	else:
 		speed = WALK_SPEED
-		print(timer)
 		
 		timer = 0
 	move_velocity = move_velocity.move_toward(walk_direction * speed * walk_direction.length(), ACCELERATION * delta)
@@ -103,7 +101,6 @@ func _process(_delta: float) -> void:
 func _physics_process(delta):
 	velocity = _movment(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
-
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Attack":

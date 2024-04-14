@@ -70,6 +70,10 @@ func load_current_state() -> void:
 	GLOBALVARIABLES.amount_of_cash = load_array_data_n(GLOBALVARIABLES.WAVE_STATE_DETAILS, GLOBALVARIABLES.WAVE_STATE_DETAILS_ENUM.MONEY_AMOUNT)
 	GLOBALVARIABLES.scoreboard_array = load_array_data_n(GLOBALVARIABLES.SCOREBOARD, GLOBALVARIABLES.SCOREBOARD_ENUM.SCOREBOARD_SAVE)
 
+	for built_sites in load_array_data_n(GLOBALVARIABLES.BUILD_SITES, GLOBALVARIABLES.BUILD_SITES_ENUM.BUILT_BUILD_SITES):
+		get_node('/root/Map1/BuildSites/'+built_sites).build()
+		print(get_node('/root/Map1/BuildSites/'+built_sites).name)
+
 func _ready() -> void:
 	verify_save_directory(USER_DATA_PATH)
 	_inital_load_or_save()
@@ -107,5 +111,4 @@ func clear_save() -> void:
 	reset_in_progress = true
 	save_game()
 	save_to_file()
-	load_current_state()
 	reset_in_progress = false

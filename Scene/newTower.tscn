@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/Tower.gd" id="1_e2df6"]
 [ext_resource type="PackedScene" uid="uid://bsh3x6jsj2htt" path="res://Scene/player_projectile.tscn" id="2_h757w"]
-[ext_resource type="PackedScene" uid="uid://s7rlmp4j0bvr" path="res://Models/Tower.glb" id="3_s7evq"]
+[ext_resource type="PackedScene" uid="uid://67phfgxviiii" path="res://Models/Tower.glb" id="3_s7evq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7vvsp"]
 radius = 4.0
