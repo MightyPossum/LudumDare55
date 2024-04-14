@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nu8uuvghqc6m"]
+[gd_scene load_steps=3 format=3 uid="uid://nu8uuvghqc6m"]
 
 [ext_resource type="Script" path="res://Script/menu scripts/main_menu.gd" id="1_nsqus"]
+[ext_resource type="Script" path="res://Script/save_game_system/StartMenuSaveHandling.gd" id="2_soww7"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -37,9 +38,16 @@ theme_override_font_sizes/font_size = 90
 text = "A GAME FOR THE AGES"
 
 [node name="Start" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
-text = "Start"
+text = "New Game"
+script = ExtResource("2_soww7")
+
+[node name="Load" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Load Game"
 
 [node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -50,4 +58,5 @@ text = "Exit"
 layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
