@@ -16,6 +16,7 @@ radius = 0.998
 [node name="Tower" type="Node3D"]
 script = ExtResource("1_e2df6")
 projectileModel = ExtResource("2_h757w")
+fire_rate = 800
 
 [node name="Range" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.88771, 0)
@@ -33,12 +34,14 @@ shape = SubResource("SphereShape3D_7vvsp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0617981, 3.43418, -0.0431213)
 shape = SubResource("BoxShape3D_dbh6d")
+disabled = true
 
 [node name="Crystal" type="StaticBody3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7678, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Crystal"]
 shape = SubResource("SphereShape3D_0tko7")
+disabled = true
 
 [connection signal="area_entered" from="Range" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Range" to="." method="_on_area_3d_area_exited"]
