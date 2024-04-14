@@ -22,7 +22,7 @@ func _attack(rtarget, delta):
 		
 		var target_direction = rtarget.global_transform.origin
 		
-		projectile.global_position = $Turret/Muzzle.global_position
+		projectile.global_position = $Model/Crystal.global_position
 		projectile.look_at(target_direction)
 		
 		last_fire_time = Time.get_ticks_msec()

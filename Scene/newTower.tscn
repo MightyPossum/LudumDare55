@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4vhguexb06se"]
+
+[ext_resource type="Script" path="res://Script/Tower.gd" id="1_e2df6"]
+[ext_resource type="PackedScene" uid="uid://bsh3x6jsj2htt" path="res://Scene/player_projectile.tscn" id="2_h757w"]
+[ext_resource type="PackedScene" uid="uid://s7rlmp4j0bvr" path="res://Models/Tower.glb" id="3_s7evq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7vvsp"]
+radius = 4.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbh6d"]
+size = Vector3(3.46136, 3.51462, 3.68256)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0tko7"]
+radius = 0.998
+
+[node name="Tower" type="Node3D"]
+script = ExtResource("1_e2df6")
+projectileModel = ExtResource("2_h757w")
+
+[node name="Range" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.88771, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
+transform = Transform3D(10.19, 2.84217e-14, 0, 2.84217e-14, 10.19, 0, 0, 0, 10.19, 0, 0, 0)
+shape = SubResource("SphereShape3D_7vvsp")
+
+[node name="Model" parent="." instance=ExtResource("3_s7evq")]
+
+[node name="Body" type="StaticBody3D" parent="Model"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0617981, 1.75725, -0.0431213)
+shape = SubResource("BoxShape3D_dbh6d")
+
+[node name="Crystal" type="StaticBody3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7678, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Crystal"]
+shape = SubResource("SphereShape3D_0tko7")
+
+[connection signal="area_entered" from="Range" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Range" to="." method="_on_area_3d_area_exited"]
