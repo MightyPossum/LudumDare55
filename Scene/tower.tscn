@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbygftrbf55kt"]
 
 [ext_resource type="Script" path="res://Script/Tower.gd" id="1_357wo"]
-[ext_resource type="PackedScene" uid="uid://bvoc5h42jp8yf" path="res://Scene/player_projectile.tscn" id="2_oo4kd"]
+[ext_resource type="PackedScene" uid="uid://bsh3x6jsj2htt" path="res://Scene/player_projectile.tscn" id="2_oo4kd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7vvsp"]
 radius = 13.584
