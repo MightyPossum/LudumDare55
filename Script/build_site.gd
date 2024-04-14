@@ -14,7 +14,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Use") and player_in_area == true:
 		if not built:
 			if GLOBALVARIABLES.amount_of_cash >= GLOBALVARIABLES.tower_cost:
-				GLOBALVARIABLES.amount_of_cash -= GLOBALVARIABLES.tower_cost #Removes cash from global pool
+				get_node(GLOBALVARIABLES.gamehandler_path)._update_cash(-GLOBALVARIABLES.tower_cost)
 				GLOBALVARIABLES.tower_cost = round(GLOBALVARIABLES.tower_cost * cost_incrase) #Cost increase every time a tower is built
 				build()
 
