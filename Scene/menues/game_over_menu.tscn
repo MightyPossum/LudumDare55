@@ -1,20 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://bml8dd58priog"]
 
-[ext_resource type="Script" path="res://Script/menu scripts/pause_menu.gd" id="1_76p3d"]
+[ext_resource type="Script" path="res://Script/menu scripts/game_over_menu.gd" id="1_l20xf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fj3tx"]
 font_size = 90
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
 
-[node name="pause_menu" type="Control"]
+[node name="game_over_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_76p3d")
+script = ExtResource("1_l20xf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

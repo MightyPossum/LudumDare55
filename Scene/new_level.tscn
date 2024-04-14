@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4s8unn15xlkv"]
+[gd_scene load_steps=17 format=3 uid="uid://b1bwk1w7jb01u"]
 
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="1_5x2oo"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_ptkri"]
@@ -7,6 +7,9 @@
 [ext_resource type="MeshLibrary" uid="uid://culqtppbxpwf6" path="res://tiles.tres" id="3_ft7mc"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="5_hbii3"]
 [ext_resource type="PackedScene" path="res://Scene/tower.tscn" id="7_w5q3k"]
+[ext_resource type="PackedScene" uid="uid://cbygftrbf55kt" path="res://Scene/tower.tscn" id="7_w5q3k"]
+[ext_resource type="Script" path="res://Script/save_game_system/save_game.gd" id="8_e55l6"]
+[ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="9_vycus"]
 
 [sub_resource type="Curve3D" id="Curve3D_gt3bj"]
 _data = {
@@ -35,6 +38,15 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 18
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yinq6"]
+
+[sub_resource type="Sky" id="Sky_do314"]
+sky_material = SubResource("ProceduralSkyMaterial_yinq6")
+
+[sub_resource type="Environment" id="Environment_6paxs"]
+background_mode = 2
+sky = SubResource("Sky_do314")
 
 [node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
 script = ExtResource("1_ptkri")
@@ -76,9 +88,64 @@ metadata/_edit_group_ = true
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.83159, -0.0724846, -0.550639, 0.532697, 0.384605, 0.753865, 0.157135, -0.920231, 0.358446, -58, 293, -116)
 light_energy = 2.676
+shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("5_hbii3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.0899, 12.0323, 246.823)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0899, 20.0323, -197.177)
 
 [node name="Tower" parent="." instance=ExtResource("7_w5q3k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.0692, 20.9519, 160.909)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6paxs")
+
+[node name="save_handler" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_e55l6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="next_wave_timer" type="Panel" parent="CanvasLayer/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 340.0
+offset_top = 38.0
+offset_right = 804.0
+offset_bottom = 129.0
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/next_wave_timer"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 272.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 50
+text = "Next wave:"
+vertical_alignment = 1
+
+[node name="next_wave_countdown" type="Label" parent="CanvasLayer/HUD/next_wave_timer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 323.0
+offset_top = 8.0
+offset_right = 415.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 50
+text = "00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("9_vycus")]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[editable path="CanvasLayer/pause_menu"]

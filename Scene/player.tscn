@@ -1,76 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cufr1tp0y32vk"]
+[gd_scene load_steps=12 format=3 uid="uid://cufr1tp0y32vk"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_mbj6f"]
 [ext_resource type="PackedScene" uid="uid://bsh3x6jsj2htt" path="res://Scene/player_projectile.tscn" id="2_7evvj"]
-[ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="4_b1xjl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afgrb"]
-
-[sub_resource type="Animation" id="Animation_vsikm"]
-resource_name = "Attack"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/SubViewportContainer/SubViewport/StaffCam/staff:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -1.08366, 0.487418), Vector3(0, -1.08385, 0.689405), Vector3(0, -1.08366, 0.487418)]
-}
-
-[sub_resource type="Animation" id="Animation_oixly"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/SubViewportContainer/SubViewport/StaffCam/staff:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1.08366, 0.487418)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/SubViewportContainer/SubViewport/StaffCam/staff:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.3237, -3.42277, -0.401963)]
-}
-
-[sub_resource type="Animation" id="Animation_hhl86"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/SubViewportContainer/SubViewport/StaffCam/staff:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(2.3237, -3.42277, -0.401963), Vector3(2.324, -3.5, -0.5), Vector3(2.32393, -3.48069, -0.475491), Vector3(2.324, -3.3, -0.3), Vector3(2.32378, -3.44208, -0.426472), Vector3(2.3237, -3.42277, -0.401963)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kl2bf"]
-_data = {
-"Attack": SubResource("Animation_vsikm"),
-"RESET": SubResource("Animation_oixly"),
-"idle": SubResource("Animation_hhl86")
-}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52w7q"]
 resource_name = "Material.001"
@@ -140,6 +73,72 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_no2ca")
 
+[sub_resource type="Animation" id="Animation_vsikm"]
+resource_name = "Attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera/staff:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.08366, 0.487418), Vector3(0, -1.08385, 0.689405), Vector3(0, -1.08366, 0.487418)]
+}
+
+[sub_resource type="Animation" id="Animation_oixly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera/staff:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.08366, 0.487418)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera/staff:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.3237, -3.42277, -0.401963)]
+}
+
+[sub_resource type="Animation" id="Animation_hhl86"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera/staff:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.3237, -3.42277, -0.401963), Vector3(2.324, -3.5, -0.5), Vector3(2.32393, -3.48069, -0.475491), Vector3(2.324, -3.3, -0.3), Vector3(2.32378, -3.44208, -0.426472), Vector3(2.3237, -3.42277, -0.401963)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kl2bf"]
+_data = {
+"Attack": SubResource("Animation_vsikm"),
+"RESET": SubResource("Animation_oixly"),
+"idle": SubResource("Animation_hhl86")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_mbj6f")
 projectileModel = ExtResource("2_7evvj")
@@ -151,18 +150,24 @@ shape = SubResource("CapsuleShape3D_afgrb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0155659, 0, -0.0131297)
 cull_mask = 524287
 
+[node name="staff" type="Node3D" parent="Camera"]
+transform = Transform3D(0.413585, -0.219232, -0.883677, 0.468346, 0.883545, 0, 0.780768, -0.413867, 0.468097, 2.3237, -3.42277, -0.401963)
+
+[node name="Staff" type="MeshInstance3D" parent="Camera/staff"]
+layers = 524288
+mesh = SubResource("ArrayMesh_cqpw1")
+skeleton = NodePath("")
+
+[node name="projectileSpawn" type="Node3D" parent="Camera/staff"]
+unique_name_in_owner = true
+transform = Transform3D(1, 2.98023e-08, -1.19209e-07, 0, 1, -1.19209e-07, -2.98023e-08, 2.38419e-07, 1, -0.175249, 4.19362, -0.102159)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kl2bf")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_b1xjl")]
-process_mode = 2
-visible = false
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -170,28 +175,16 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 positional_shadow_atlas_size = 4096
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="StaffCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+[node name="StaffCam" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38419e-07, 0)
 cull_mask = 524288
-
-[node name="staff" type="Node3D" parent="CanvasLayer/SubViewportContainer/SubViewport/StaffCam"]
-transform = Transform3D(0.413585, -0.219232, -0.883677, 0.468346, 0.883545, 0, 0.780768, -0.413867, 0.468097, 2.3237, -3.42277, -0.401963)
-
-[node name="Staff" type="MeshInstance3D" parent="CanvasLayer/SubViewportContainer/SubViewport/StaffCam/staff"]
-layers = 524288
-mesh = SubResource("ArrayMesh_cqpw1")
-skeleton = NodePath("")
-
-[node name="projectileSpawn" type="Node3D" parent="CanvasLayer/SubViewportContainer/SubViewport/StaffCam/staff"]
-unique_name_in_owner = true
-transform = Transform3D(1, 2.98023e-08, -1.19209e-07, 0, 1, -1.19209e-07, -2.98023e-08, 2.38419e-07, 1, -0.175249, 4.19362, -0.102159)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

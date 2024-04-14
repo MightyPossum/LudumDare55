@@ -2,18 +2,16 @@ extends CharacterBody3D
 
 @onready var camera: Camera3D = $Camera
 @onready var staffCam : Camera3D = %StaffCam
-@onready var pause_menu = $CanvasLayer/pause_menu
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @export var projectileModel : PackedScene
-var paused = false
 
 
-var speed = 25.0
-var sprint = 30.0
-const WALK_SPEED = 25.0
+var speed = 20.0
+var sprint = 25.0
+const WALK_SPEED = 20.0
 const ACCELERATION = 100.0
 
-var jump_height: float = 3 
+var jump_height: float = 2 
 var camera_sensitivity: float = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -32,16 +30,6 @@ var jump_velocity: Vector3
 func _ready() -> void:
 	anim_player.play("idle")
 	capture_mouse()
-
-func pauseMenu():
-	if paused:
-		pause_menu.hide()
-		get_tree().paused = false
-	else:
-		pause_menu.show()
-		get_tree().paused = true
-		
-	paused = !paused
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -101,10 +89,8 @@ func _jump(delta: float) -> Vector3:
 	return jump_velocity
 	
 func _process(_delta: float) -> void:
-	staffCam.transform = camera.transform
-	if Input.is_action_just_pressed("Exit"):
-		pauseMenu()
-		release_mouse()
+	staffCam.global_position = camera.global_position
+	staffCam.rotation = camera.rotation
 
 func _physics_process(delta):
 	velocity = _movment(delta) + _gravity(delta) + _jump(delta)

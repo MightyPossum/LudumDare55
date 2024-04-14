@@ -34,10 +34,9 @@ _data = {
 }
 point_count = 10
 
-[node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
+[node name="Map1" type="Node3D"]
 script = ExtResource("1_qpnpm")
 enemyScenes = Array[PackedScene]([ExtResource("7_rx2go"), ExtResource("7_rx2go"), ExtResource("7_rx2go")])
-pathNodes = [NodePath("Path1"), NodePath("Path2"), NodePath("Path3")]
 
 [node name="MapEnvironmentContainer" type="Node3D" parent="."]
 metadata/_edit_lock_ = true

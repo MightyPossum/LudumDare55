@@ -1,22 +1,14 @@
 extends Node3D
-
-signal hit
-
-@export var health = 10
+var timer = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	timer -= delta
+	if timer <= 0:
+		queue_free()
 	pass
-
-func _on_area_area_entered(area):
-	
-	if area.is_in_group("enemy"):
-		area.get_parent()._attacked_sacred_object();
-		health -= 1;
-	
-	if health <= 0:
-		get_node("/root/Map1")._game_over();
