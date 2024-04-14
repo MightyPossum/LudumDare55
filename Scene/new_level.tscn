@@ -89,7 +89,7 @@ light_energy = 2.676
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("5_hbii3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.0899, 12.0323, 246.823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0899, 20.0323, -197.177)
 
 [node name="Tower" parent="." instance=ExtResource("7_w5q3k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.0692, 20.9519, 160.909)

@@ -43,7 +43,6 @@ func _set_wave_details(wave_number : int) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_update_scoreboard()
 	await get_tree().create_timer(round_wait_delay).timeout
 	_prepare_wave();
 
@@ -118,8 +117,9 @@ func _game_over():
 
 	_update_scoreboard()
 
-	GLOBALVARIABLES.current_wave = 0
+	GLOBALVARIABLES.current_wave = 1
 	GLOBALVARIABLES.amount_of_cash = 0
+	%save_handler.save_game()
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Scene/menues/game_over_menu.tscn")
