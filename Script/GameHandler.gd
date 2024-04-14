@@ -51,6 +51,7 @@ func _set_wave_details(wave_number : int) -> void:
 func _ready() -> void:
 	_update_life_hud()
 	_update_cash(0)
+	_update_cost(500)
 	wave_countdown = true
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
@@ -201,3 +202,7 @@ func _update_life_hud():
 func _update_cash(_cash_amount : int):
 	GLOBALVARIABLES.amount_of_cash += _cash_amount
 	%cash_amount.text = str(GLOBALVARIABLES.amount_of_cash)
+	
+func _update_cost(_cost_amount : int):
+	GLOBALVARIABLES.tower_cost = _cost_amount
+	%cost_amount.text = str(GLOBALVARIABLES.tower_cost, " $")

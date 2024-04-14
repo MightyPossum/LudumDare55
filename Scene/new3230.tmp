@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1bwk1w7jb01u"]
+[gd_scene load_steps=17 format=3 uid="uid://b1bwk1w7jb01u"]
 
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="1_5x2oo"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_ptkri"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="5_hbii3"]
 [ext_resource type="Script" path="res://Script/save_game_system/save_game.gd" id="8_e55l6"]
 [ext_resource type="PackedScene" uid="uid://0v60bqfmdn7s" path="res://Scene/build_site.tscn" id="9_8gee0"]
-[ext_resource type="Script" path="res://Script/CanvasLayer.gd" id="9_ba0vj"]
 [ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="9_vycus"]
 
 [sub_resource type="Curve3D" id="Curve3D_gt3bj"]
@@ -171,7 +170,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.32, 18.179, -38.5709)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6807, 18.179, 6.68869)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("9_ba0vj")
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -298,16 +296,15 @@ text = "$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="build_hud" type="Panel" parent="CanvasLayer/HUD"]
+[node name="Build_hud" type="Panel" parent="CanvasLayer/HUD"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 385.0
 offset_top = 457.0
 offset_right = 772.0
 offset_bottom = 497.0
 
-[node name="build_text" type="Label" parent="CanvasLayer/HUD/build_hud"]
+[node name="build_text" type="Label" parent="CanvasLayer/HUD/Build_hud"]
 layout_mode = 0
 offset_right = 231.0
 offset_bottom = 40.0
@@ -316,7 +313,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="cost_amount" type="Label" parent="CanvasLayer/HUD/build_hud"]
+[node name="cost_amount" type="Label" parent="CanvasLayer/HUD/Build_hud"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 231.0

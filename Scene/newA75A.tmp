@@ -171,6 +171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.32, 18.179, -38.5709)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6807, 18.179, 6.68869)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 script = ExtResource("9_ba0vj")
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
@@ -300,7 +301,6 @@ vertical_alignment = 1
 
 [node name="build_hud" type="Panel" parent="CanvasLayer/HUD"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 385.0
 offset_top = 457.0
