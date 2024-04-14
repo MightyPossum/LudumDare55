@@ -28,5 +28,5 @@ func _on_area_3d_body_entered(body:Node3D):
 			_enemy_death();
 
 func _enemy_death():
-	get_parent().get_parent().current_number_of_enemies -= 1
+	get_parent().get_parent()._enemy_died()
 	queue_free()

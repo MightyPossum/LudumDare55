@@ -1,6 +1,5 @@
 extends Node3D
 
-var enemy_wave_array = Array([20,30,40])
 var late_wave_incrementer : float = 0.0
 
 @export var enemyScenes : Array[PackedScene]
@@ -50,14 +49,18 @@ func _set_wave_details(wave_number : int) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_update_life_hud()
+	_update_cash_hud()
 	wave_countdown = true
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
+	%enemies_left_hud.visible = false
 	await get_tree().create_timer(round_wait_delay).timeout
 	_prepare_wave();
 
 func _prepare_wave() -> void:
 	_set_wave_details(GLOBALVARIABLES.current_wave);
+	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
 	spawning = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,12 +76,12 @@ func _physics_process(delta: float) -> void:
 	
 	if wave_countdown:
 		timer_counter += delta
-		print(int(timer_counter))
 		%next_wave_countdown.text = str(int(wave_timer-timer_counter))
 		if timer_counter >= wave_timer:
 			wave_countdown = false
 			timer_counter = 0
 			%next_wave_timer.visible = false
+			%enemies_left_hud.visible = true
 
 
 func _spawn_new_enemy():
@@ -90,7 +93,8 @@ func _spawn_new_enemy():
 	elif enemies_to_spawn <= 0 and current_number_of_enemies <= 0:
 		wave_countdown = true
 		%next_wave_timer.visible = true
-		wave_timer = round_wait_delay+spawning_delay
+		%enemies_left_hud.visible = false
+		wave_timer = round_wait_delay+round(spawning_delay)
 		await get_tree().create_timer(round_wait_delay).timeout
 		GLOBALVARIABLES.current_wave += 1
 		_prepare_wave();
@@ -176,3 +180,21 @@ func pauseMenu():
 		get_tree().paused = true
 		
 	paused = !paused
+
+func _enemy_died():
+	current_number_of_enemies -= 1
+	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
+
+func _handle_life_lost():
+	GLOBALVARIABLES.health -= 1;
+	
+	if GLOBALVARIABLES.health <= 0:
+		get_node("/root/Map1")._game_over()
+
+	_update_life_hud()
+
+func _update_life_hud():
+	%lives_left_count.text = str(GLOBALVARIABLES.health)
+
+func _update_cash_hud():
+	%cash_amount.text = str(GLOBALVARIABLES.amount_of_cash)
