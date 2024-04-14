@@ -7,6 +7,7 @@ var damage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = decayTime
+	$AudioStreamPlayer3D.play()
 	pass # Replace with function body.
 
 

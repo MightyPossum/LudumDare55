@@ -28,6 +28,7 @@ func _on_area_3d_body_entered(body:Node3D):
 		var particles = projectileParticles.instantiate()
 		get_parent().add_child(particles)
 		particles.global_position = body.global_position
+		$hurtPlayer.play()
 		body.queue_free();
 		if health <= 0:
 			_enemy_death();
