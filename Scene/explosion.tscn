@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnigurtmebslb"]
+[gd_scene load_steps=9 format=3 uid="uid://bnigurtmebslb"]
 
 [ext_resource type="Script" path="res://Scene/explosion.gd" id="1_qc56o"]
-[ext_resource type="AudioStream" uid="uid://pipe3ouuohcg" path="res://Audio/explosion.wav" id="2_rbt14"]
 
 [sub_resource type="Curve" id="Curve_k7yqc"]
 min_value = -200.0
@@ -50,6 +49,3 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_jvkvl")
 draw_pass_1 = SubResource("BoxMesh_nxmxj")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_rbt14")

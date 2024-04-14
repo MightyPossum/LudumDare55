@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var staffCam : Camera3D = %StaffCam
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @export var projectileModel : PackedScene
+var timer = 0
 
 
 var speed
@@ -35,7 +36,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		look_direction = event.relative * 0.001
 		if mouse_captured: _rotate_camera()
-	if Input.is_action_just_pressed("Jump"): jumping = true
+	if Input.is_action_just_pressed("Jump"): 
+		jumping = true
+		$jumpPlayer.play()
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -69,9 +72,12 @@ func _movment(delta: float) -> Vector3:
 	
 	if Input.is_action_pressed("Sprint"):
 		speed = SPRINT
+		print(timer)
 	else:
 		speed = WALK_SPEED
+		print(timer)
 		
+		timer = 0
 	move_velocity = move_velocity.move_toward(walk_direction * speed * walk_direction.length(), ACCELERATION * delta)
 	
 	return move_velocity
@@ -89,6 +95,7 @@ func _jump(delta: float) -> Vector3:
 	return jump_velocity
 	
 func _process(_delta: float) -> void:
+	timer += _delta
 	staffCam.global_position = camera.global_position
 	staffCam.rotation = camera.rotation
 
