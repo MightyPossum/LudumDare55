@@ -21,8 +21,16 @@ var spawning : bool = true;
 var round_wait_delay : int = 2
 
 func _set_wave_details(wave_number : int) -> void:	
-	if wave_number%5 == 0:
+	
+	if wave_number <= 5:
 		late_wave_incrementer += 2.0
+	elif wave_number%5 == 0:
+		late_wave_incrementer += 2.0
+
+	if wave_number == 1:
+		late_wave_incrementer += 6
+	elif wave_number == 10:
+		late_wave_incrementer -= 6
 
 	enemies_to_spawn = int(wave_number * (4 + (late_wave_incrementer/2)))
 
@@ -75,17 +83,20 @@ func _add_enemy_to_lane():
 func _get_random_path() -> int:
 	var path_number : int = 0;
 	var rng = RandomNumberGenerator.new()
-	var weight1 = 1030
-	var weight2 = 870
-	var weight3 = 250
-	var rand = rng.randf_range(0, weight1 + weight2 + weight3)
+	var weight1 = 500
+	var weight2 = 350
+	var weight3 = 1500
+	var weigth4 = 1250
+	var rand = rng.randf_range(0, weight1 + weight2 + weight3 + weigth4)
 
 	if rand <= weight1:
 		path_number = 0
 	elif rand > weight1 && rand <= (weight1 + weight2):
 		path_number = 1
-	elif rand > (weight1 + weight2):
+	elif rand > weight1 && rand > weight2 && rand <= (weight1 + weight2 + weight3):
 		path_number = 2
+	elif rand > (weight1 + weight2 + weight3):
+		path_number = 3
 
 	return path_number
 
