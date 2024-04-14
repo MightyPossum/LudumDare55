@@ -8,8 +8,11 @@ radius = 5.0
 height = 10.0
 
 [node name="Enemy" type="PathFollow3D" groups=["enemy"]]
-rotation_mode = 1
+rotation_mode = 4
+use_model_front = true
+cubic_interp = false
 loop = false
+tilt_enabled = false
 script = ExtResource("1_jjda4")
 
 [node name="Area3D" type="Area3D" parent="." groups=["enemy"]]
