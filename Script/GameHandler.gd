@@ -131,23 +131,16 @@ func _game_over():
 
 func _update_scoreboard():
 	var scoreboard_array = GLOBALVARIABLES.scoreboard_array
-
-	var highest_wave : int = scoreboard_array[0][0]
+	
 	var lowest_wave : int = scoreboard_array[0][0]
-	var array_location_high : int = 0
 	var array_location_low : int = 0
 
 	var current_wave : int = GLOBALVARIABLES.current_wave
 	
 	for i in range(1,scoreboard_array.size()):
-		if scoreboard_array[i][0] > highest_wave:
-			highest_wave = scoreboard_array[i][0]
-			array_location_high = i
 		if scoreboard_array[i][0] < lowest_wave:
 			lowest_wave = scoreboard_array[i][0]
 			array_location_low = i
-
-	print(highest_wave)
-	print(array_location_high)
-	print(lowest_wave)
-	print(array_location_low)
+	
+	if lowest_wave < current_wave:
+		GLOBALVARIABLES.scoreboard_array[array_location_low] = Array([current_wave, 0])
