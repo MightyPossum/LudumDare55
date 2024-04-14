@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1bwk1w7jb01u"]
+[gd_scene load_steps=17 format=3 uid="uid://b1bwk1w7jb01u"]
 
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="1_5x2oo"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_ptkri"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="5_hbii3"]
 [ext_resource type="PackedScene" uid="uid://cbygftrbf55kt" path="res://Scene/tower.tscn" id="7_w5q3k"]
 [ext_resource type="Script" path="res://Script/save_game_system/save_game.gd" id="8_e55l6"]
+[ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="9_vycus"]
 
 [sub_resource type="Curve3D" id="Curve3D_gt3bj"]
 _data = {
@@ -89,6 +90,7 @@ light_energy = 2.676
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("5_hbii3")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0899, 20.0323, -197.177)
 
 [node name="Tower" parent="." instance=ExtResource("7_w5q3k")]
@@ -100,3 +102,49 @@ environment = SubResource("Environment_6paxs")
 [node name="save_handler" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_e55l6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="next_wave_timer" type="Panel" parent="CanvasLayer/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 340.0
+offset_top = 38.0
+offset_right = 804.0
+offset_bottom = 129.0
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/next_wave_timer"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 272.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 50
+text = "Next wave:"
+vertical_alignment = 1
+
+[node name="next_wave_countdown" type="Label" parent="CanvasLayer/HUD/next_wave_timer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 323.0
+offset_top = 8.0
+offset_right = 415.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 50
+text = "00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("9_vycus")]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[editable path="CanvasLayer/pause_menu"]
