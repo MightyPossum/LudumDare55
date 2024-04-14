@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dikjbndonn111"]
+[gd_scene load_steps=8 format=3 uid="uid://dikjbndonn111"]
 
 [ext_resource type="Script" path="res://Scene/enemy_boom.gd" id="1_cfi8v"]
+[ext_resource type="AudioStream" uid="uid://pipe3ouuohcg" path="res://Audio/explosion.wav" id="2_u3v0b"]
 
 [sub_resource type="Curve" id="Curve_r0xu0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.521583, 0.531618), -3.98603, -3.98603, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -36,3 +37,6 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ydpcb")
 draw_pass_1 = SubResource("BoxMesh_a74kh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u3v0b")
