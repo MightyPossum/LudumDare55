@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cufr1tp0y32vk"]
+[gd_scene load_steps=12 format=3 uid="uid://cufr1tp0y32vk"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_mbj6f"]
 [ext_resource type="PackedScene" uid="uid://bsh3x6jsj2htt" path="res://Scene/player_projectile.tscn" id="2_7evvj"]
-[ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="4_b1xjl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afgrb"]
 
@@ -168,13 +167,7 @@ libraries = {
 "": SubResource("AnimationLibrary_kl2bf")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_b1xjl")]
-process_mode = 2
-visible = false
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -182,14 +175,14 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 positional_shadow_atlas_size = 4096
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="StaffCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+[node name="StaffCam" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38419e-07, 0)
 cull_mask = 524288
