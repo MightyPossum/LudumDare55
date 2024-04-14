@@ -1,14 +1,14 @@
-class_name buildSite extends Node3D
+extends Node3D
 
 var player_in_area = false
+var show_build_panel = false
 @export var built = false
 @export var cost_incrase = 1.5
 
-signal built1(built)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Use") and player_in_area == true:
@@ -18,14 +18,19 @@ func _unhandled_input(event: InputEvent) -> void:
 				build()
 
 func build():
-	GLOBALVARIABLES.tower_cost = round(GLOBALVARIABLES.tower_cost * cost_incrase) #Cost increase every time a tower is built
+	get_node(GLOBALVARIABLES.gamehandler_path)._update_cost(round(GLOBALVARIABLES.tower_cost * cost_incrase))
 	$Tower.show()
 	$TowerBuild.hide()
 	%Tower.built = true
 	built = true
+	GLOBALVARIABLES.build = false
 	
 func _on_area_3d_body_entered(body):
-		player_in_area = true
+	player_in_area = true
+	if not built:
+		GLOBALVARIABLES.build = true
 
 func _on_area_3d_body_exited(body):
-		player_in_area = false
+	player_in_area = false
+	if not built:
+		GLOBALVARIABLES.build = false

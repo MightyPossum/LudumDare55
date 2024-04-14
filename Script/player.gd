@@ -101,7 +101,6 @@ func _physics_process(delta):
 	velocity = _movment(delta) + _gravity(delta) + _jump(delta)
 	move_and_slide()
 
-
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Attack":
 		anim_player.play("idle")
