@@ -90,7 +90,7 @@ func _spawn_new_enemy():
 	elif enemies_to_spawn <= 0 and current_number_of_enemies <= 0:
 		wave_countdown = true
 		%next_wave_timer.visible = true
-		wave_timer = round_wait_delay
+		wave_timer = round_wait_delay+spawning_delay
 		await get_tree().create_timer(round_wait_delay).timeout
 		GLOBALVARIABLES.current_wave += 1
 		_prepare_wave();
