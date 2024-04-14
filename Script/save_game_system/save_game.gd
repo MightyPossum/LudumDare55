@@ -111,5 +111,4 @@ func clear_save() -> void:
 	reset_in_progress = true
 	save_game()
 	save_to_file()
-	load_current_state()
 	reset_in_progress = false
