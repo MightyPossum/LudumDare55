@@ -89,6 +89,17 @@ func save_game() -> void:
 	game_data.save_array(GLOBALVARIABLES.WAVE_STATE_DETAILS, wave_state_details)
 	var scoreboard = Array([GLOBALVARIABLES.scoreboard_array])
 	game_data.save_array(GLOBALVARIABLES.SCOREBOARD, scoreboard)
+
+	## SAVING BUILD SITES
+	var build_sites_built: Array
+	for build_site in get_node('/root/Map1/BuildSites').get_children():
+		print(build_site.name)
+		print(build_site.built)
+		if build_site.built:
+			build_sites_built.append(build_site.name)
+
+	game_data.save_array(GLOBALVARIABLES.BUILD_SITES, Array([build_sites_built]))
+
 	save_to_file()
 
 ## Deletes everything in the savefile
