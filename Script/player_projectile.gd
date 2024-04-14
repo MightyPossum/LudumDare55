@@ -2,11 +2,12 @@ extends CharacterBody3D
 @export var speed : int
 @export var decayTime : int
 var timer
-var damage = 2
+var damage = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = decayTime
+	$AudioStreamPlayer3D.play()
 	pass # Replace with function body.
 
 
