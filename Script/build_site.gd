@@ -15,8 +15,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				GLOBALVARIABLES.amount_of_cash -= GLOBALVARIABLES.tower_cost #Removes cash from global pool
 				GLOBALVARIABLES.tower_cost = round(GLOBALVARIABLES.tower_cost * cost_incrase) #Cost increase every time a tower is built
 				build()
-			else:
-				print("You don't have enough cash")
 
 func build():
 	$Tower.show()
