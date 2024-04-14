@@ -6,6 +6,9 @@ var late_wave_incrementer : float = 0.0
 @export var enemyScenes : Array[PackedScene]
 @export var pathNodes : Array[Path3D]
 
+@onready var pause_menu = %pause_menu
+
+var paused = false
 
 var spawning_delay_default : float = 5.0
 
@@ -14,10 +17,14 @@ var current_enemy_speed : float;
 var spawning_delay : float = spawning_delay_default;
 var current_enemy_health : int;
 
+var wave_countdown : bool
+var wave_timer : int = round_wait_delay
+var timer_counter : float = 0
+
 var current_number_of_enemies : int;
 
 var spawning : bool = true;
-var round_wait_delay : int = 2
+var round_wait_delay : float = 30-spawning_delay
 
 func _set_wave_details(wave_number : int) -> void:	
 	if wave_number < 5:
@@ -43,7 +50,9 @@ func _set_wave_details(wave_number : int) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_update_scoreboard()
+	wave_countdown = true
+	wave_timer = round_wait_delay+spawning_delay
+	%next_wave_timer.visible = true
 	await get_tree().create_timer(round_wait_delay).timeout
 	_prepare_wave();
 
@@ -52,11 +61,25 @@ func _prepare_wave() -> void:
 	spawning = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("Exit"):
+		pauseMenu()
+		%Player.release_mouse()
+	
 	if !spawning:
 		spawning = true
 		await get_tree().create_timer(spawning_delay).timeout
 		_spawn_new_enemy();
+	
+	if wave_countdown:
+		timer_counter += delta
+		print(int(timer_counter))
+		%next_wave_countdown.text = str(int(wave_timer-timer_counter))
+		if timer_counter >= wave_timer:
+			wave_countdown = false
+			timer_counter = 0
+			%next_wave_timer.visible = false
+
 
 func _spawn_new_enemy():
 	if enemies_to_spawn >= 1:
@@ -65,6 +88,9 @@ func _spawn_new_enemy():
 		enemies_to_spawn -= 1
 		spawning = false
 	elif enemies_to_spawn <= 0 and current_number_of_enemies <= 0:
+		wave_countdown = true
+		%next_wave_timer.visible = true
+		wave_timer = round_wait_delay+spawning_delay
 		await get_tree().create_timer(round_wait_delay).timeout
 		GLOBALVARIABLES.current_wave += 1
 		_prepare_wave();
@@ -118,8 +144,9 @@ func _game_over():
 
 	_update_scoreboard()
 
-	GLOBALVARIABLES.current_wave = 0
+	GLOBALVARIABLES.current_wave = 1
 	GLOBALVARIABLES.amount_of_cash = 0
+	%save_handler.save_game()
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Scene/menues/game_over_menu.tscn")
@@ -139,3 +166,13 @@ func _update_scoreboard():
 	
 	if lowest_wave < current_wave:
 		GLOBALVARIABLES.scoreboard_array[array_location_low] = Array([current_wave, 0])
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		get_tree().paused = false
+	else:
+		pause_menu.show()
+		get_tree().paused = true
+		
+	paused = !paused
