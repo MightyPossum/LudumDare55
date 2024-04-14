@@ -184,6 +184,8 @@ func pauseMenu():
 func _enemy_died():
 	current_number_of_enemies -= 1
 	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
+	GLOBALVARIABLES.amount_of_cash += randi_range(80, 110)
+	_update_cash_hud()
 
 func _handle_life_lost():
 	GLOBALVARIABLES.health -= 1;
