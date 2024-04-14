@@ -1,7 +1,7 @@
 extends PathFollow3D
 
-@onready var health = get_node("/root/Map1").current_enemy_health
-@onready var enemy_speed : float = get_node("/root/Map1").current_enemy_speed
+@onready var health = get_node(GLOBALVARIABLES.gamehandler_path).current_enemy_health
+@onready var enemy_speed : float = get_node(GLOBALVARIABLES.gamehandler_path).current_enemy_speed
 @export var projectileParticles : PackedScene
 @export var enemyDeathParticles : PackedScene
 
@@ -33,7 +33,7 @@ func _on_area_3d_body_entered(body:Node3D):
 			_enemy_death();
 
 func _enemy_death():
-	get_parent().get_parent()._enemy_died()
+	get_node(GLOBALVARIABLES.gamehandler_path)._enemy_died()
 	var particles = enemyDeathParticles.instantiate()
 	get_parent().add_child(particles)
 	particles.global_position = global_position

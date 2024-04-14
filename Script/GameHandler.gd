@@ -50,7 +50,7 @@ func _set_wave_details(wave_number : int) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_life_hud()
-	_update_cash_hud()
+	_update_cash(0)
 	wave_countdown = true
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
@@ -150,6 +150,7 @@ func _game_over():
 
 	GLOBALVARIABLES.current_wave = 1
 	GLOBALVARIABLES.amount_of_cash = 0
+	GLOBALVARIABLES.health = 10
 	%save_handler.save_game()
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -184,8 +185,7 @@ func pauseMenu():
 func _enemy_died():
 	current_number_of_enemies -= 1
 	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
-	GLOBALVARIABLES.amount_of_cash += randi_range(80, 110)
-	_update_cash_hud()
+	_update_cash(randi_range(80, 110))
 
 func _handle_life_lost():
 	GLOBALVARIABLES.health -= 1;
@@ -198,5 +198,6 @@ func _handle_life_lost():
 func _update_life_hud():
 	%lives_left_count.text = str(GLOBALVARIABLES.health)
 
-func _update_cash_hud():
+func _update_cash(_cash_amount : int):
+	GLOBALVARIABLES.amount_of_cash += _cash_amount
 	%cash_amount.text = str(GLOBALVARIABLES.amount_of_cash)
