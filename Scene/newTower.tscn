@@ -8,7 +8,7 @@
 radius = 4.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbh6d"]
-size = Vector3(3.46136, 3.51462, 3.68256)
+size = Vector3(3.46136, 0.160752, 3.68256)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0tko7"]
 radius = 0.998
@@ -31,7 +31,7 @@ shape = SubResource("SphereShape3D_7vvsp")
 [node name="Body" type="StaticBody3D" parent="Model"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0617981, 1.75725, -0.0431213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0617981, 3.43418, -0.0431213)
 shape = SubResource("BoxShape3D_dbh6d")
 
 [node name="Crystal" type="StaticBody3D" parent="Model"]
