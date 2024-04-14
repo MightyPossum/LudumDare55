@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="5_becxh"]
 [ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="7_rx2go"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="7_x51ax"]
+[ext_resource type="PackedScene" uid="uid://cbygftrbf55kt" path="res://Scene/tower.tscn" id="10_w6ngj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w11t5"]
 size = Vector3(66, 1.295, 66.645)
@@ -164,3 +165,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.4, 6.2, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.83159, -0.0724846, -0.550639, 0.532697, 0.384605, 0.753865, 0.157135, -0.920231, 0.358446, -58, 56, -116)
 light_energy = 2.676
+
+[node name="Tower" parent="." instance=ExtResource("10_w6ngj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.4248, 4.30379, -8.30553)
