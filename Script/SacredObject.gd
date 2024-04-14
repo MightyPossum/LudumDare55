@@ -2,8 +2,6 @@ extends Node3D
 
 signal hit
 
-@export var health = 10
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -16,7 +14,4 @@ func _on_area_area_entered(area):
 	
 	if area.is_in_group("enemy"):
 		area.get_parent()._attacked_sacred_object();
-		health -= 1;
-	
-	if health <= 0:
-		get_node("/root/Map1")._game_over();
+		get_node("/root/Map1")._handle_life_lost

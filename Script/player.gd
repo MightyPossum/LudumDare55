@@ -6,12 +6,12 @@ extends CharacterBody3D
 @export var projectileModel : PackedScene
 
 
-var speed = 20.0
-var sprint = 25.0
-const WALK_SPEED = 20.0
+var speed
+const SPRINT = 20.0
+const WALK_SPEED = 10.0
 const ACCELERATION = 100.0
 
-var jump_height: float = 2 
+var jump_height: float = 4.5
 var camera_sensitivity: float = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -68,7 +68,7 @@ func _movment(delta: float) -> Vector3:
 	var walk_direction: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
 	
 	if Input.is_action_pressed("Sprint"):
-		speed = sprint
+		speed = SPRINT
 	else:
 		speed = WALK_SPEED
 		
