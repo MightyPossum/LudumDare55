@@ -38,7 +38,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if mouse_captured: _rotate_camera()
 	if Input.is_action_just_pressed("Jump"): 
 		jumping = true
-		$jumpPlayer.play()
+		if is_on_floor:
+			$jumpPlayer.play()
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

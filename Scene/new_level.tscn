@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://0v60bqfmdn7s" path="res://Scene/build_site.tscn" id="9_8gee0"]
 [ext_resource type="Script" path="res://Script/CanvasLayer.gd" id="9_ba0vj"]
 [ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="9_vycus"]
+[ext_resource type="PackedScene" path="res://Scene/sacredCircle.tscn" id="10_mrixf"]
 
 [sub_resource type="Curve3D" id="Curve3D_gt3bj"]
 _data = {
@@ -48,7 +49,7 @@ sky_material = SubResource("ProceduralSkyMaterial_yinq6")
 background_mode = 2
 sky = SubResource("Sky_do314")
 
-[node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
+[node name="Map2" type="Node3D" node_paths=PackedStringArray("pathNodes")]
 script = ExtResource("1_ptkri")
 enemyScenes = Array[PackedScene]([ExtResource("2_ol02k"), ExtResource("2_ol02k"), ExtResource("2_ol02k")])
 pathNodes = [NodePath("Path1"), NodePath("Path2"), NodePath("Path3"), NodePath("Path4")]
