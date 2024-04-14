@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7t64vdxbr4gk"]
+[gd_scene load_steps=10 format=3 uid="uid://b7t64vdxbr4gk"]
 
 [ext_resource type="Script" path="res://Script/enemy.gd" id="1_jjda4"]
 [ext_resource type="PackedScene" uid="uid://jushqoahplno" path="res://Models/enemy.glb" id="2_n2f7h"]
@@ -7,12 +7,103 @@
 radius = 5.0
 height = 10.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xwacd"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector3(0, -3, 0)
+scale_min = 0.5
+color = Color(0.651194, 0.231067, 0.234974, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6lk4"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vf06p"]
+material = SubResource("StandardMaterial3D_u6lk4")
+
+[sub_resource type="Animation" id="Animation_w6k1n"]
+resource_name = "flying"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.5, -0.25, 0, 0.25, 0, -0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+
+[sub_resource type="Animation" id="Animation_2e8y5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ts57l"]
+_data = {
+"RESET": SubResource("Animation_2e8y5"),
+"flying": SubResource("Animation_w6k1n")
+}
+
 [node name="Enemy" type="PathFollow3D" groups=["enemy"]]
-rotation_mode = 4
-use_model_front = true
-cubic_interp = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+rotation_mode = 1
 loop = false
-tilt_enabled = false
 script = ExtResource("1_jjda4")
 
 [node name="Area3D" type="Area3D" parent="." groups=["enemy"]]
@@ -24,6 +115,17 @@ shape = SubResource("CapsuleShape3D_3yxxk")
 
 [node name="enemy" parent="Area3D" instance=ExtResource("2_n2f7h")]
 transform = Transform3D(-4.22, 0, 3.68924e-07, 0, 4.22, 0, -3.68924e-07, 0, -4.22, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09604, 0)
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_xwacd")
+draw_pass_1 = SubResource("BoxMesh_vf06p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ts57l")
+}
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
