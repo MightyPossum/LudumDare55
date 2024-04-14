@@ -143,7 +143,6 @@ _data = {
 collision_layer = 33
 script = ExtResource("1_mbj6f")
 projectileModel = ExtResource("2_7evvj")
-jump_height = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_afgrb")
