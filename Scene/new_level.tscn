@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1bwk1w7jb01u"]
+[gd_scene load_steps=19 format=3 uid="uid://b1bwk1w7jb01u"]
 
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="1_5x2oo"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_ptkri"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="2_ol02k"]
 [ext_resource type="MeshLibrary" uid="uid://culqtppbxpwf6" path="res://tiles.tres" id="3_ft7mc"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="5_hbii3"]
+[ext_resource type="PackedScene" uid="uid://b8qce5pqu2mbv" path="res://Scene/sacredCircle.tscn" id="6_fyoqd"]
 [ext_resource type="Script" path="res://Script/save_game_system/save_game.gd" id="8_e55l6"]
 [ext_resource type="PackedScene" uid="uid://0v60bqfmdn7s" path="res://Scene/build_site.tscn" id="9_8gee0"]
 [ext_resource type="Script" path="res://Script/CanvasLayer.gd" id="9_ba0vj"]
@@ -48,7 +49,7 @@ sky_material = SubResource("ProceduralSkyMaterial_yinq6")
 background_mode = 2
 sky = SubResource("Sky_do314")
 
-[node name="Map2" type="Node3D" node_paths=PackedStringArray("pathNodes")]
+[node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
 script = ExtResource("1_ptkri")
 enemyScenes = Array[PackedScene]([ExtResource("2_ol02k"), ExtResource("2_ol02k"), ExtResource("2_ol02k")])
 pathNodes = [NodePath("Path1"), NodePath("Path2"), NodePath("Path3"), NodePath("Path4")]
@@ -242,8 +243,14 @@ curve = SubResource("Curve3D_wb185")
 [node name="Path4" type="Path3D" parent="."]
 curve = SubResource("Curve3D_x0qwj")
 
+[node name="SacredCircle" parent="." instance=ExtResource("6_fyoqd")]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, -1, 0, 1, 1.19249e-08, -44.9, 29.9, -220.4)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
 [node name="SacredObject" parent="." instance=ExtResource("1_5x2oo")]
 transform = Transform3D(-0.0133513, 0, -0.999911, 0, 1, 0, 0.999911, 0, -0.0133513, -44.9122, 31.8959, -218.49)
+visible = false
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
