@@ -15,6 +15,10 @@ run/main_scene="res://Scene/menues/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GLOBALVARIABLES="*res://Script/globalvariables.gd"
+
 [input]
 
 Move_Left={
@@ -60,3 +64,7 @@ Sprint={
 3d_physics/layer_3="world"
 3d_physics/layer_4="sacred_object"
 3d_physics/layer_5="projectile "
+
+[physics]
+
+3d/default_gravity=15.0
