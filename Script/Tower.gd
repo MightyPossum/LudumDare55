@@ -6,8 +6,8 @@ var built = false
 
 @export var projectileModel : PackedScene
 
-var last_fire_time:int
-@export var fire_rate:int = 1000
+var fire_delay : int = 1
+var reload : bool = false
 
 func _ready():
 	pass
@@ -19,7 +19,7 @@ func _process(delta):
 		current_enemy = enemies_in_range.front()
 	
 func _attack(rtarget, delta):
-	if Time.get_ticks_msec() > (last_fire_time+fire_rate):
+	if !reload:
 		var projectile = projectileModel.instantiate()
 		get_parent().add_child(projectile)
 		
@@ -27,12 +27,12 @@ func _attack(rtarget, delta):
 		
 		projectile.global_position = $Model/Crystal.global_position
 		projectile.look_at(target_direction)
+		reload = true
+		await get_tree().create_timer(fire_delay).timeout
+		reload = false
 		
-		last_fire_time = Time.get_ticks_msec()
 		
 func _on_area_3d_area_entered(area):
-	#if current_enemy == null:
-	#	current_enemy = area
 	enemies_in_range.append(area)
 
 func _on_area_3d_area_exited(area):

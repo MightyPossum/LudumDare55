@@ -23,7 +23,7 @@ var shooting : bool = false
 var shots_fired : int = 0
 var max_shots_fired : int = 10
 var is_reloading : bool = false
-
+var staff_reload_time : int = 5
 var mouse_captured: bool = false
 
 var move_direction: Vector2
@@ -102,10 +102,10 @@ func _process(_delta: float) -> void:
 		shooting = true
 		shots_fired += 1
 		await get_tree().create_timer(.8).timeout
+		if shots_fired == max_shots_fired && !is_reloading:
+			_start_reload()
 		shooting = false
 	elif Input.is_action_pressed('shoot') && !shooting:
-		if !is_reloading:
-			_start_reload()
 		anim_player.play("Attack")
 		shooting = true
 		await get_tree().create_timer(.8).timeout
@@ -124,7 +124,7 @@ func _start_reload():
 	is_reloading = true
 	%Staff.hide()
 	%staffReload.show()
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(staff_reload_time).timeout
 	shots_fired = 0
 	%Staff.show()
 	%staffReload.hide()
