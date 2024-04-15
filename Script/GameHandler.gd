@@ -69,7 +69,7 @@ func _ready() -> void:
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
 	%enemies_left_hud.visible = false
-	await get_tree().create_timer(round_wait_delay).timeout
+	await get_tree().create_timer(round_wait_delay, false).timeout
 	_prepare_wave();
 	round_wait_delay = 20
 
@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	
 	if !spawning:
 		spawning = true
-		await get_tree().create_timer(spawning_delay).timeout
+		await get_tree().create_timer(spawning_delay, false).timeout
 		_spawn_new_enemy();
 	
 	if wave_countdown:
@@ -113,7 +113,7 @@ func _spawn_new_enemy():
 		GLOBALVARIABLES.current_wave += 1
 		%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
 		%save_handler.save_game()
-		await get_tree().create_timer(round_wait_delay).timeout
+		await get_tree().create_timer(round_wait_delay, false).timeout
 		_prepare_wave();
 		spawning = false
 	else:
