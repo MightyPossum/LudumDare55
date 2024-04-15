@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b7t64vdxbr4gk" path="res://Scene/enemy.tscn" id="2_ol02k"]
 [ext_resource type="MeshLibrary" uid="uid://culqtppbxpwf6" path="res://tiles.tres" id="3_ft7mc"]
 [ext_resource type="PackedScene" uid="uid://cufr1tp0y32vk" path="res://Scene/player.tscn" id="5_hbii3"]
-[ext_resource type="PackedScene" uid="uid://b8qce5pqu2mbv" path="res://Scene/sacredCircle.tscn" id="6_fyoqd"]
+[ext_resource type="PackedScene" path="res://Scene/sacredCircle.tscn" id="6_fyoqd"]
 [ext_resource type="Script" path="res://Script/save_game_system/save_game.gd" id="8_e55l6"]
 [ext_resource type="PackedScene" uid="uid://0v60bqfmdn7s" path="res://Scene/build_site.tscn" id="9_8gee0"]
 [ext_resource type="Script" path="res://Script/CanvasLayer.gd" id="9_ba0vj"]
@@ -260,10 +260,17 @@ vertical_alignment = 1
 [node name="build_hud" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-offset_left = 385.0
-offset_top = 457.0
-offset_right = 772.0
-offset_bottom = 497.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 196.0
+offset_right = 187.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="build_text" type="Label" parent="CanvasLayer/build_hud"]
 layout_mode = 0
@@ -290,10 +297,17 @@ vertical_alignment = 1
 [node name="upgrade_hud" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-offset_left = 385.0
-offset_top = 457.0
-offset_right = 772.0
-offset_bottom = 521.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 184.0
+offset_right = 187.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="upgrade_label" type="Label" parent="CanvasLayer/upgrade_hud"]
 unique_name_in_owner = true
@@ -393,6 +407,9 @@ current = true
 
 [node name="staff" parent="Player/Camera" index="0"]
 transform = Transform3D(0.413585, -0.219232, -0.883677, 0.468346, 0.883545, 0, 0.780768, -0.413867, 0.468097, 2.3237, -3.42277, -0.401963)
+
+[node name="SubViewport" parent="Player/SubViewportContainer" index="0"]
+size = Vector2i(2560, 1440)
 
 [node name="StaffCam" parent="Player/SubViewportContainer/SubViewport" index="0"]
 current = true
