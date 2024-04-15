@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://nu8uuvghqc6m"]
+[gd_scene load_steps=4 format=3 uid="uid://nu8uuvghqc6m"]
 
 [ext_resource type="Script" path="res://Script/menu scripts/main_menu.gd" id="1_nsqus"]
 [ext_resource type="Script" path="res://Script/save_game_system/StartMenuSaveHandling.gd" id="2_soww7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_otuno"]
+font_size = 90
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.705882)
+shadow_offset = Vector2(2.15, 2.015)
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -32,10 +39,14 @@ alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
-text = "A GAME FOR THE AGES"
+text = "Crystal Defence: 
+Revenge of the Crystal"
+label_settings = SubResource("LabelSettings_otuno")
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Start" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
