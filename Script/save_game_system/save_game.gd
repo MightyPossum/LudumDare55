@@ -72,7 +72,6 @@ func load_current_state() -> void:
 
 	for built_sites in load_array_data_n(GLOBALVARIABLES.BUILD_SITES, GLOBALVARIABLES.BUILD_SITES_ENUM.BUILT_BUILD_SITES):
 		get_node('/root/Map1/BuildSites/'+built_sites).build()
-		print(get_node('/root/Map1/BuildSites/'+built_sites).name)
 
 func _ready() -> void:
 	verify_save_directory(USER_DATA_PATH)
@@ -97,8 +96,6 @@ func save_game() -> void:
 	## SAVING BUILD SITES
 	var build_sites_built: Array
 	for build_site in get_node('/root/Map1/BuildSites').get_children():
-		print(build_site.name)
-		print(build_site.built)
 		if build_site.built:
 			build_sites_built.append(build_site.name)
 

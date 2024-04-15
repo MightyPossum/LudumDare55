@@ -89,17 +89,18 @@ shape = SubResource("CapsuleShape3D_3yxxk")
 transform = Transform3D(-4.22, 0, 3.68924e-07, 0, 4.22, 0, -3.68924e-07, 0, -4.22, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="Area3D"]
-transform = Transform3D(2.72018, 0, 0, 0, 1.21698, 0, 0, 0, 1, 0, 6.28981, 0)
+transform = Transform3D(2.72018, 0, 0, 0, 2.01618, 0, 0, 0, 1, 0, 7.2069, 0)
 texture = SubResource("ViewportTexture_vqki8")
 region_enabled = true
-region_rect = Rect2(-0.25, -0.430386, 226.397, 28.4868)
+region_rect = Rect2(-0.25, -0.430386, 226.397, 45.7504)
 
 [node name="SubViewport" type="SubViewport" parent="Area3D/Sprite3D"]
 transparent_bg = true
 
-[node name="ProgressBar" type="ProgressBar" parent="Area3D/Sprite3D/SubViewport"]
+[node name="health_bar" type="ProgressBar" parent="Area3D/Sprite3D/SubViewport"]
+unique_name_in_owner = true
 offset_right = 225.0
-offset_bottom = 27.0
+offset_bottom = 45.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ftnwa")
 value = 50.0
 show_percentage = false

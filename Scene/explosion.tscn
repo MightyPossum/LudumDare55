@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bnigurtmebslb"]
 
-[ext_resource type="Script" path="res://Scene/explosion.gd" id="1_qc56o"]
+[ext_resource type="Script" path="res://Script/explosion.gd" id="1_g8yjn"]
 
 [sub_resource type="Curve" id="Curve_k7yqc"]
 min_value = -200.0
@@ -39,11 +39,13 @@ albedo_color = Color(0, 0.533333, 1, 1)
 material = SubResource("StandardMaterial3D_7b6h0")
 
 [node name="Explosion" type="Node3D"]
-script = ExtResource("1_qc56o")
+script = ExtResource("1_g8yjn")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 50
 lifetime = 0.5
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_jvkvl")
 draw_pass_1 = SubResource("BoxMesh_nxmxj")

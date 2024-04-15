@@ -150,7 +150,7 @@ projectileModel = ExtResource("2_7evvj")
 shape = SubResource("CapsuleShape3D_afgrb")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0155659, 0, -0.0131297)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0155659, 2, -0.0131297)
 cull_mask = 524287
 
 [node name="staff" type="Node3D" parent="Camera"]
@@ -187,7 +187,7 @@ render_target_update_mode = 4
 
 [node name="StaffCam" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38419e-07, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 cull_mask = 524288
 
 [node name="jumpPlayer" type="AudioStreamPlayer" parent="."]
