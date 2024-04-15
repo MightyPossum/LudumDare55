@@ -15,6 +15,8 @@ func _ready():
 func _process(delta):
 	if current_enemy != null and built == true:
 		_attack(current_enemy, delta)
+	else:
+		current_enemy = enemies_in_range.front()
 	
 func _attack(rtarget, delta):
 	if Time.get_ticks_msec() > (last_fire_time+fire_rate):
@@ -29,11 +31,13 @@ func _attack(rtarget, delta):
 		last_fire_time = Time.get_ticks_msec()
 		
 func _on_area_3d_area_entered(area):
-	if current_enemy == null:
-		current_enemy = area
+	#if current_enemy == null:
+	#	current_enemy = area
 	enemies_in_range.append(area)
 
 func _on_area_3d_area_exited(area):
+	if area == current_enemy:
+		current_enemy = null
 	enemies_in_range.erase(area)
 
 

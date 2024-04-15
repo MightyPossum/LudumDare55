@@ -269,6 +269,9 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0899, 20.0323, -197.177)
 collision_mask = 33
 
+[node name="staff" parent="Player/Camera" index="0"]
+transform = Transform3D(0.413585, -0.219232, -0.883677, 0.468346, 0.883545, 0, 0.780768, -0.413867, 0.468097, 2.3237, -3.42277, -0.401963)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6paxs")
 
@@ -345,3 +348,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.32, 18.179, -38.5709)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6807, 18.179, 6.68869)
 
 [editable path="CanvasLayer/pause_menu"]
+[editable path="Player"]

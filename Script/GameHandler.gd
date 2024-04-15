@@ -1,6 +1,6 @@
 extends Node3D
 
-var late_wave_incrementer : float = 0.0
+
 
 @export var enemyScenes : Array[PackedScene]
 @export var pathNodes : Array[Path3D]
@@ -8,6 +8,10 @@ var late_wave_incrementer : float = 0.0
 @onready var pause_menu = %pause_menu
 
 var paused = false
+
+##FOR TESTING
+var total_cash : int = 0
+
 
 var spawning_delay_default : float = 5.0
 
@@ -26,12 +30,20 @@ var spawning : bool = true;
 var round_wait_delay : float = 30-spawning_delay
 
 func _set_wave_details(wave_number : int) -> void:
+	print(total_cash)
+
+	var late_wave_incrementer : float = 0.0
+
 	if wave_number < 5:
 		late_wave_incrementer = wave_number*2
+	else:
+		late_wave_incrementer = wave_number
 	
 	if wave_number >= 5:
-		late_wave_incrementer = wave_number/5
+		late_wave_incrementer += wave_number/5
 
+	#2 * (4 + (2*2)/2)
+	#5 * (4 + (5+(5/5))/2)
 	enemies_to_spawn = int(wave_number * (4 + (late_wave_incrementer/2)))
 
 	current_enemy_speed = 5 + (wave_number + late_wave_incrementer)/10
@@ -49,7 +61,7 @@ func _set_wave_details(wave_number : int) -> void:
 func _ready() -> void:
 	_update_life_hud()
 	_update_cash(0)
-	_update_cost(500)
+	_update_cost(GLOBALVARIABLES.tower_cost)
 	wave_countdown = true
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
@@ -199,9 +211,12 @@ func _update_life_hud():
 	%lives_left_count.text = str(GLOBALVARIABLES.health)
 
 func _update_cash(_cash_amount : int):
+	if _cash_amount > 0:
+		total_cash += _cash_amount
 	GLOBALVARIABLES.amount_of_cash += _cash_amount
 	%cash_amount.text = str(GLOBALVARIABLES.amount_of_cash)
 	
 func _update_cost(_cost_amount : int):
 	GLOBALVARIABLES.tower_cost = _cost_amount
+	print(GLOBALVARIABLES.tower_cost)
 	%cost_amount.text = str(GLOBALVARIABLES.tower_cost, " $")

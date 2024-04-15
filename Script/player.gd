@@ -20,6 +20,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var jumping: bool = false
 var shooting : bool = false
+var shots_fired : int = 0
+var max_shots_fired : int = 10
+var is_reloading : bool = false
+
 var mouse_captured: bool = false
 
 var move_direction: Vector2
@@ -88,8 +92,7 @@ func _process(_delta: float) -> void:
 	staffCam.global_position = camera.global_position
 	staffCam.rotation = camera.rotation
 
-	if Input.is_action_pressed('shoot') && !shooting:
-	#if event is InputEventMouseButton: && event.button_index == MOUSE_BUTTON_LEFT && event.pressed && !shooting:
+	if Input.is_action_pressed('shoot') && !shooting && shots_fired < max_shots_fired:
 		anim_player.play("Attack")
 		var projectile = projectileModel.instantiate()
 		projectile.damage = 0.5
@@ -97,8 +100,16 @@ func _process(_delta: float) -> void:
 		projectile.global_position = %projectileSpawn.global_position
 		projectile.rotation = camera.rotation
 		shooting = true
+		shots_fired += 1
 		await get_tree().create_timer(.8).timeout
-		shooting = false		
+		shooting = false
+	elif Input.is_action_pressed('shoot') && !shooting:
+		if !is_reloading:
+			_start_reload()
+		anim_player.play("Attack")
+		shooting = true
+		await get_tree().create_timer(.8).timeout
+		shooting = false
 
 func _physics_process(delta):
 	velocity = _movment(delta) + _gravity(delta) + _jump(delta)
@@ -107,4 +118,10 @@ func _physics_process(delta):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Attack":
 		anim_player.play("idle")
-	pass # Replace with function body.
+
+
+func _start_reload():
+	is_reloading = true
+	await get_tree().create_timer(10).timeout
+	shots_fired = 0
+	is_reloading = false

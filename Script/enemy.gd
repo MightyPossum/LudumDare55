@@ -7,16 +7,18 @@ extends PathFollow3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	%health_bar.visible = false
+	%health_bar.max_value = health
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	progress += enemy_speed * delta
 
-func _on_area_3d_area_entered(area):
-	if area.is_in_group("projectile"):
-		health -= area.damage;
+func _update_progress_bar():
+	%health_bar.visible = true
+	%health_bar.value = health
+
 
 func _attacked_sacred_object():
 	_enemy_death();
@@ -25,6 +27,7 @@ func _attacked_sacred_object():
 func _on_area_3d_body_entered(body:Node3D):
 	if body.is_in_group("projectile"):
 		health -= body.damage;
+		_update_progress_bar()
 		var particles = projectileParticles.instantiate()
 		get_parent().add_child(particles)
 		particles.global_position = body.global_position
