@@ -61,7 +61,7 @@ gravity = Vector3(0, -5, 0)
 scale_min = 0.02
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_pv1wn")
-color = Color(0, 0.552941, 0.788235, 1)
+color = Color(0, 0.72549, 0.788235, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfbmh"]
 vertex_color_use_as_albedo = true
@@ -71,11 +71,11 @@ material = SubResource("StandardMaterial3D_mfbmh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qwdxx"]
 emission_shape = 1
-emission_sphere_radius = 1.0
+emission_sphere_radius = 2.27
 gravity = Vector3(0, 0, 0)
 scale_min = 0.01
 scale_max = 0.1
-color = Color(0.22, 0.558, 1, 1)
+color = Color(0.219608, 0.831373, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_akgkg"]
 radius = 1.1
@@ -96,12 +96,12 @@ mesh = SubResource("ArrayMesh_fby6u")
 skeleton = NodePath("")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="PlayerProjectile"]
-amount = 100
+amount = 500
 process_material = SubResource("ParticleProcessMaterial_3iokh")
 draw_pass_1 = SubResource("BoxMesh_hca8o")
 
 [node name="GPUParticles3D3" type="GPUParticles3D" parent="PlayerProjectile"]
-amount = 1000
+amount = 5000
 lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_qwdxx")
 draw_pass_1 = SubResource("BoxMesh_hca8o")
