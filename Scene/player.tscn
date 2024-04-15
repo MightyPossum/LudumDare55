@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cufr1tp0y32vk"]
+[gd_scene load_steps=15 format=3 uid="uid://cufr1tp0y32vk"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_mbj6f"]
 [ext_resource type="PackedScene" uid="uid://bsh3x6jsj2htt" path="res://Scene/player_projectile.tscn" id="2_7evvj"]
+[ext_resource type="PackedScene" uid="uid://ct5j0oio25kpt" path="res://Models/staffReload.glb" id="3_7ej1w"]
 [ext_resource type="AudioStream" uid="uid://bibjjaop5q135" path="res://Audio/jump.wav" id="3_r74nu"]
 [ext_resource type="AudioStream" uid="uid://bv7e4xnsjngfi" path="res://Audio/walk.wav" id="4_w3t2q"]
 
@@ -13,11 +14,9 @@ cull_mode = 2
 albedo_color = Color(0.54666, 0.28224, 0.0276245, 1)
 roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oweh2"]
-resource_name = "Material.002"
-cull_mode = 2
-albedo_color = Color(0, 0.541805, 0.907206, 1)
-roughness = 0.5
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_squf8"]
+albedo_color = Color(0, 1, 1, 1)
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_no2ca"]
 _surfaces = [{
@@ -65,7 +64,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 60,
 "index_data": PackedByteArray(2, 0, 13, 0, 5, 0, 7, 0, 27, 0, 4, 0, 0, 0, 18, 0, 11, 0, 1, 0, 21, 0, 19, 0, 3, 0, 25, 0, 23, 0, 9, 0, 54, 0, 29, 0, 14, 0, 32, 0, 6, 0, 17, 0, 36, 0, 10, 0, 20, 0, 41, 0, 16, 0, 26, 0, 47, 0, 24, 0, 8, 0, 34, 0, 53, 0, 12, 0, 38, 0, 30, 0, 15, 0, 40, 0, 35, 0, 22, 0, 45, 0, 43, 0, 28, 0, 52, 0, 49, 0, 33, 0, 59, 0, 51, 0, 39, 0, 56, 0, 31, 0, 42, 0, 55, 0, 37, 0, 46, 0, 57, 0, 44, 0, 50, 0, 58, 0, 48, 0),
-"material": SubResource("StandardMaterial3D_oweh2"),
+"material": SubResource("StandardMaterial3D_squf8"),
 "name": "Material.002",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -157,9 +156,15 @@ cull_mask = 524287
 transform = Transform3D(0.413585, -0.219232, -0.883677, 0.468346, 0.883545, 0, 0.780768, -0.413867, 0.468097, 2.3237, -3.42277, -0.401963)
 
 [node name="Staff" type="MeshInstance3D" parent="Camera/staff"]
+unique_name_in_owner = true
 layers = 524288
 mesh = SubResource("ArrayMesh_cqpw1")
 skeleton = NodePath("")
+
+[node name="staffReload" parent="Camera/staff" instance=ExtResource("3_7ej1w")]
+unique_name_in_owner = true
+transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+visible = false
 
 [node name="projectileSpawn" type="Node3D" parent="Camera/staff"]
 unique_name_in_owner = true
