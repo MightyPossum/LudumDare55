@@ -27,10 +27,9 @@ var timer_counter : float = 0
 var current_number_of_enemies : int;
 
 var spawning : bool = true;
-var round_wait_delay : float = 30-spawning_delay
+var round_wait_delay : float = 3-spawning_delay
 
 func _set_wave_details(wave_number : int) -> void:
-	print(total_cash)
 
 	var late_wave_incrementer : float = 0.0
 
@@ -42,8 +41,6 @@ func _set_wave_details(wave_number : int) -> void:
 	if wave_number >= 5:
 		late_wave_incrementer += floor(wave_number/5)
 
-	#2 * (4 + (2*2)/2)
-	#5 * (4 + (5+(5/5))/2)
 	enemies_to_spawn = int(wave_number * (4 + (late_wave_incrementer/2)))
 
 	current_enemy_speed = 5 + (wave_number + late_wave_incrementer)/10
@@ -63,6 +60,7 @@ func _ready() -> void:
 	_update_cash(0)
 	_update_cost(GLOBALVARIABLES.tower_cost)
 	wave_countdown = true
+	%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
 	round_wait_delay = 30
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
@@ -105,6 +103,7 @@ func _spawn_new_enemy():
 		spawning = false
 	elif enemies_to_spawn <= 0 and current_number_of_enemies <= 0:
 		wave_countdown = true
+		%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
 		%next_wave_timer.visible = true
 		%enemies_left_hud.visible = false
 		wave_timer = round_wait_delay+round(spawning_delay)
@@ -220,5 +219,14 @@ func _update_cash(_cash_amount : int):
 	
 func _update_cost(_cost_amount : int):
 	GLOBALVARIABLES.tower_cost = _cost_amount
-	print(GLOBALVARIABLES.tower_cost)
 	%cost_amount.text = str(GLOBALVARIABLES.tower_cost, " $")
+
+func _toggle_upgrade_screen(_cost_amount : int, toggle : bool, tower_level : int, tower : Node3D):
+	%upgrade_hud.visible = toggle
+	%upgrade_label.text = str("Press 'E' to upgrade to level ",tower_level+1) 
+	%upgrade_cost.text = str(_cost_amount, " $")
+	if tower_level < 10:
+		%upgrade_stat_label.text = str("UPGRADE TOWER SPEED ++")
+	else:
+		
+		%upgrade_stat_label.text = str("UPGRADE TOWER DAMAGE ++")

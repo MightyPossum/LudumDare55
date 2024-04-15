@@ -137,7 +137,8 @@ offset_bottom = 107.0
 grow_horizontal = 2
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/next_wave_timer"]
+[node name="next_wave_label" type="Label" parent="CanvasLayer/next_wave_timer"]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = 8.0
 offset_top = 9.0
@@ -258,6 +259,7 @@ vertical_alignment = 1
 
 [node name="build_hud" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 offset_left = 385.0
 offset_top = 457.0
 offset_right = 772.0
@@ -269,7 +271,7 @@ offset_left = -1.0
 offset_top = -1.0
 offset_right = 230.0
 offset_bottom = 39.0
-text = "Press E to Build: "
+text = "Press 'E' to Build: "
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -281,7 +283,51 @@ offset_left = 230.0
 offset_top = -1.0
 offset_right = 386.0
 offset_bottom = 39.0
-text = "50000 $"
+text = "50000000 $"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="upgrade_hud" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+offset_left = 385.0
+offset_top = 457.0
+offset_right = 772.0
+offset_bottom = 521.0
+
+[node name="upgrade_label" type="Label" parent="CanvasLayer/upgrade_hud"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 291.0
+offset_bottom = 35.0
+text = "Press 'E' to Upgrade to level 100: "
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="upgrade_stat_label" type="Label" parent="CanvasLayer/upgrade_hud"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = 31.0
+offset_right = 387.0
+offset_bottom = 64.0
+text = "Upgrade Tower Speed ++"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="upgrade_cost" type="Label" parent="CanvasLayer/upgrade_hud"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 289.0
+offset_top = -1.0
+offset_right = 386.0
+offset_bottom = 39.0
+text = "50000000 $"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("9_vycus")]

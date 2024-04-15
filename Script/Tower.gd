@@ -1,12 +1,13 @@
 extends Node3D
 
+@export var projectileModel : PackedScene
+
 var enemies_in_range:Array[Node3D]
 var current_enemy:Node3D = null
 var built = false
+var tower_damage : float
 
-@export var projectileModel : PackedScene
-
-var fire_delay : int = 1
+var fire_delay : float
 var reload : bool = false
 
 func _ready():
@@ -15,13 +16,14 @@ func _ready():
 func _process(delta):
 	if current_enemy != null and built == true:
 		_attack(current_enemy, delta)
-	else:
+	elif enemies_in_range.size() > 0:
 		current_enemy = enemies_in_range.front()
 	
 func _attack(rtarget, delta):
 	if !reload:
 		var projectile = projectileModel.instantiate()
 		get_parent().add_child(projectile)
+		projectile.damage = tower_damage
 		
 		var target_direction = rtarget.global_transform.origin
 		
