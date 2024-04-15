@@ -56,7 +56,7 @@ func _set_wave_details(wave_number : int) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("cheat"):
-		GLOBALVARIABLES.amount_of_cash += 500
+		_update_cash(500)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

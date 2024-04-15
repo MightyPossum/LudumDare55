@@ -64,7 +64,7 @@ func _calculate_stats():
 		tower.fire_delay = 1
 		tower.tower_damage = 0.5
 	elif tower_upgrade_level <= 10:
-		tower.fire_delay = 1 - (tower_upgrade_level-1 * 0.1)
+		tower.fire_delay = 1 - ((tower_upgrade_level-1) * 0.1)
 		tower.tower_damage = 0.5
 	else:
 		tower.fire_delay = 1 - (9 * 0.1)
