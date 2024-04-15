@@ -101,9 +101,9 @@ func _process(_delta: float) -> void:
 		projectile.rotation = camera.rotation
 		shooting = true
 		shots_fired += 1
-		await get_tree().create_timer(.8, false).timeout
 		if shots_fired == max_shots_fired && !is_reloading:
 			_start_reload()
+		await get_tree().create_timer(.8, false).timeout
 		shooting = false
 	elif Input.is_action_pressed('shoot') && !shooting:
 		anim_player.play("Attack")
