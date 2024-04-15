@@ -30,7 +30,7 @@ func _attack(rtarget, delta):
 		projectile.global_position = $Model/Crystal.global_position
 		projectile.look_at(target_direction)
 		reload = true
-		await get_tree().create_timer(fire_delay).timeout
+		await get_tree().create_timer(fire_delay, false).timeout
 		reload = false
 		
 		

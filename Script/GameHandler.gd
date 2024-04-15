@@ -54,9 +54,11 @@ func _set_wave_details(wave_number : int) -> void:
 
 	current_enemy_health = int(wave_number + late_wave_incrementer)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("cheat"):
 		_update_cash(500)
+	if Input.is_action_just_pressed("save_game"):
+		%save_handler.save_game()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -70,7 +72,7 @@ func _ready() -> void:
 	%next_wave_timer.visible = true
 	%enemies_left_hud.visible = false
 	%tower_hint.visible = true
-	await get_tree().create_timer(round_wait_delay).timeout
+	await get_tree().create_timer(round_wait_delay, false).timeout
 	_prepare_wave();
 	round_wait_delay = 20
 	
@@ -87,7 +89,7 @@ func _physics_process(delta: float) -> void:
 		
 	if !spawning:
 		spawning = true
-		await get_tree().create_timer(spawning_delay).timeout
+		await get_tree().create_timer(spawning_delay, false).timeout
 		_spawn_new_enemy();
 	
 	
@@ -115,7 +117,7 @@ func _spawn_new_enemy():
 		GLOBALVARIABLES.current_wave += 1
 		%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
 		%save_handler.save_game()
-		await get_tree().create_timer(round_wait_delay).timeout
+		await get_tree().create_timer(round_wait_delay, false).timeout
 		_prepare_wave();
 		spawning = false
 	else:
@@ -243,3 +245,6 @@ func _on_fallbox_body_entered(body:Node3D):
 
 func _on_hint_timer_timeout():
 	%tower_hint.visible = false
+	
+func _update_ammo_display(_shots_left : int, _max_shots : int):
+	%ammo_label.text = str(_shots_left,"/",_max_shots)

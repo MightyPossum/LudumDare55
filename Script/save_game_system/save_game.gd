@@ -71,7 +71,9 @@ func load_current_state() -> void:
 	GLOBALVARIABLES.scoreboard_array = load_array_data_n(GLOBALVARIABLES.SCOREBOARD, GLOBALVARIABLES.SCOREBOARD_ENUM.SCOREBOARD_SAVE)
 
 	for built_sites in load_array_data_n(GLOBALVARIABLES.BUILD_SITES, GLOBALVARIABLES.BUILD_SITES_ENUM.BUILT_BUILD_SITES):
-		get_node('/root/Map1/BuildSites/'+built_sites).build()
+		var tower = get_node('/root/Map1/BuildSites/'+built_sites[0])
+		tower.build(true)
+		tower.tower_upgrade_level = built_sites[1]
 
 func _ready() -> void:
 	verify_save_directory(USER_DATA_PATH)
@@ -97,7 +99,7 @@ func save_game() -> void:
 	var build_sites_built: Array
 	for build_site in get_node('/root/Map1/BuildSites').get_children():
 		if build_site.built:
-			build_sites_built.append(build_site.name)
+			build_sites_built.append(Array([build_site.name,build_site.tower_upgrade_level]))
 
 	game_data.save_array(GLOBALVARIABLES.BUILD_SITES, Array([build_sites_built]))
 

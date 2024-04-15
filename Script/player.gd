@@ -43,6 +43,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if mouse_captured: _rotate_camera()
 	if Input.is_action_just_pressed("Jump"): 
 		jumping = true
+	if Input.is_action_just_pressed("reload"):
+		_start_reload()
+		shots_fired = max_shots_fired
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -101,14 +104,15 @@ func _process(_delta: float) -> void:
 		projectile.rotation = camera.rotation
 		shooting = true
 		shots_fired += 1
-		await get_tree().create_timer(.8).timeout
+		get_node(GLOBALVARIABLES.gamehandler_path)._update_ammo_display(max_shots_fired-shots_fired,max_shots_fired)
 		if shots_fired == max_shots_fired && !is_reloading:
 			_start_reload()
+		await get_tree().create_timer(.8, false).timeout
 		shooting = false
 	elif Input.is_action_pressed('shoot') && !shooting:
 		anim_player.play("Attack")
 		shooting = true
-		await get_tree().create_timer(.8).timeout
+		await get_tree().create_timer(.8, false).timeout
 		shooting = false
 
 func _physics_process(delta):
@@ -124,7 +128,7 @@ func _start_reload():
 	is_reloading = true
 	%Staff.hide()
 	%staffReload.show()
-	await get_tree().create_timer(staff_reload_time).timeout
+	await get_tree().create_timer(staff_reload_time, false).timeout
 	shots_fired = 0
 	%Staff.show()
 	%staffReload.hide()
