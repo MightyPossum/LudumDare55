@@ -5,6 +5,8 @@ var show_build_panel = false
 @export var built = false
 @export var cost_incrase = 1.5
 
+var tower_upgrade_level = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +31,8 @@ func _on_area_3d_body_entered(body):
 	player_in_area = true
 	if not built:
 		GLOBALVARIABLES.build = true
+	else:
+		print('UPGRADE ME')
 
 func _on_area_3d_body_exited(body):
 	player_in_area = false
