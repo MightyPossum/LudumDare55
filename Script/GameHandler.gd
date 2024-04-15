@@ -69,10 +69,11 @@ func _ready() -> void:
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
 	%enemies_left_hud.visible = false
+	%tower_hint.visible = true
 	await get_tree().create_timer(round_wait_delay).timeout
 	_prepare_wave();
 	round_wait_delay = 20
-
+	
 func _prepare_wave() -> void:
 	_set_wave_details(GLOBALVARIABLES.current_wave);
 	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
@@ -83,11 +84,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Exit"):
 		pauseMenu()
 		%Player.release_mouse()
-	
+		
 	if !spawning:
 		spawning = true
 		await get_tree().create_timer(spawning_delay).timeout
 		_spawn_new_enemy();
+	
 	
 	if wave_countdown:
 		timer_counter += delta
@@ -238,3 +240,6 @@ func _toggle_upgrade_screen(_cost_amount : int, toggle : bool, tower_level : int
 
 func _on_fallbox_body_entered(body:Node3D):
 	_game_over()
+
+func _on_hint_timer_timeout():
+	%tower_hint.visible = false
