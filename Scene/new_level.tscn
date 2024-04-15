@@ -122,7 +122,7 @@ background_mode = 2
 sky = SubResource("Sky_do314")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71eaj"]
-size = Vector3(54, 1, 0.001)
+size = Vector3(1025.16, 1, 911)
 
 [node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
 script = ExtResource("1_ptkri")
@@ -540,7 +540,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6807, 18.179, 6.68869)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -94, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(52.265, 0, 0, 0, 42.225, 0, 0, 0, 3.20107e+06, 3.405, 67, 11.6184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.405, 85.4, -66.7061)
 shape = SubResource("BoxShape3D_71eaj")
 
 [connection signal="timeout" from="CanvasLayer/tower_hint/hint_timer" to="." method="_on_hint_timer_timeout"]
