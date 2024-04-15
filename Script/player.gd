@@ -43,6 +43,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if mouse_captured: _rotate_camera()
 	if Input.is_action_just_pressed("Jump"): 
 		jumping = true
+	if Input.is_action_just_pressed("reload"):
+		_start_reload()
+		shots_fired = max_shots_fired
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
