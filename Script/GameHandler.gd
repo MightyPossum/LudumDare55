@@ -54,9 +54,11 @@ func _set_wave_details(wave_number : int) -> void:
 
 	current_enemy_health = int(wave_number + late_wave_incrementer)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("cheat"):
 		_update_cash(500)
+	if Input.is_action_just_pressed("save_game"):
+		%save_handler.save_game()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
