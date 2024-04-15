@@ -437,7 +437,7 @@ current = true
 transform = Transform3D(0.413585, -0.219232, -0.883677, 0.468346, 0.883545, 0, 0.780768, -0.413867, 0.468097, 2.3237, -3.42277, -0.401963)
 
 [node name="SubViewport" parent="Player/SubViewportContainer" index="0"]
-size = Vector2i(2560, 1440)
+size = Vector2i(1920, 1080)
 
 [node name="StaffCam" parent="Player/SubViewportContainer/SubViewport" index="0"]
 current = true
