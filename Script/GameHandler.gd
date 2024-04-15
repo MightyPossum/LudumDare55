@@ -234,3 +234,7 @@ func _toggle_upgrade_screen(_cost_amount : int, toggle : bool, tower_level : int
 	else:
 		
 		%upgrade_stat_label.text = str("UPGRADE TOWER DAMAGE ++")
+
+
+func _on_fallbox_body_entered(body:Node3D):
+	_game_over()
