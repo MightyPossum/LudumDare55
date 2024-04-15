@@ -133,4 +133,6 @@ func _start_reload():
 	%Staff.show()
 	%staffReload.hide()
 	is_reloading = false
+	get_node(GLOBALVARIABLES.gamehandler_path)._update_ammo_display(max_shots_fired-shots_fired,max_shots_fired)
+	
 	
