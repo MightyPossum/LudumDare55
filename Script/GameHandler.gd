@@ -107,11 +107,11 @@ func _spawn_new_enemy():
 		spawning = false
 	elif enemies_to_spawn <= 0 and current_number_of_enemies <= 0:
 		wave_countdown = true
-		%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
 		%next_wave_timer.visible = true
 		%enemies_left_hud.visible = false
 		wave_timer = round_wait_delay+round(spawning_delay)
 		GLOBALVARIABLES.current_wave += 1
+		%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
 		%save_handler.save_game()
 		await get_tree().create_timer(round_wait_delay).timeout
 		_prepare_wave();
@@ -202,7 +202,7 @@ func pauseMenu():
 func _enemy_died():
 	current_number_of_enemies -= 1
 	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
-	_update_cash(randi_range(80, 110))
+	_update_cash(randi_range(100, 140))
 
 func _handle_life_lost():
 	GLOBALVARIABLES.health -= 1;
