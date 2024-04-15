@@ -122,6 +122,11 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _start_reload():
 	is_reloading = true
+	%Staff.hide()
+	%staffReload.show()
 	await get_tree().create_timer(10).timeout
 	shots_fired = 0
+	%Staff.show()
+	%staffReload.hide()
 	is_reloading = false
+	
