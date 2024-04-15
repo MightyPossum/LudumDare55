@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1bwk1w7jb01u"]
+[gd_scene load_steps=24 format=3 uid="uid://b1bwk1w7jb01u"]
 
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="1_5x2oo"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_ptkri"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://0v60bqfmdn7s" path="res://Scene/build_site.tscn" id="9_8gee0"]
 [ext_resource type="Script" path="res://Script/CanvasLayer.gd" id="9_ba0vj"]
 [ext_resource type="PackedScene" uid="uid://b68mjmi4era0d" path="res://Scene/menues/pause_menu.tscn" id="9_vycus"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2x2t4"]
+line_spacing = 4.0
+font_size = 30
 
 [sub_resource type="Curve3D" id="Curve3D_gt3bj"]
 _data = {
@@ -127,6 +131,39 @@ pathNodes = [NodePath("Path1"), NodePath("Path2"), NodePath("Path3"), NodePath("
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("9_ba0vj")
+
+[node name="tower_hint" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -429.0
+offset_top = -254.0
+offset_right = 438.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="tower_hint_text" type="Label" parent="CanvasLayer/tower_hint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Approch build sites to build magical towers to help you protect the sacred crystal.
+
+You can reload your staff by pressing R. Your crystal will dim and charge up."
+label_settings = SubResource("LabelSettings_2x2t4")
+autowrap_mode = 2
+
+[node name="hint_timer" type="Timer" parent="CanvasLayer/tower_hint"]
+wait_time = 5.0
+one_shot = true
+autostart = true
 
 [node name="next_wave_timer" type="Panel" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -505,6 +542,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -94, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(52.265, 0, 0, 0, 42.225, 0, 0, 0, 3.20107e+06, 3.405, 67, 11.6184)
 shape = SubResource("BoxShape3D_71eaj")
+
+[connection signal="timeout" from="CanvasLayer/tower_hint/hint_timer" to="." method="_on_hint_timer_timeout"]
 
 [editable path="CanvasLayer/pause_menu"]
 [editable path="Player"]
