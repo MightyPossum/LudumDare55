@@ -240,3 +240,6 @@ func _toggle_upgrade_screen(_cost_amount : int, toggle : bool, tower_level : int
 
 func _on_fallbox_body_entered(body:Node3D):
 	_game_over()
+
+func _update_ammo_display(_shots_left : int, _max_shots : int):
+	%ammo_label.text = str(_shots_left,"/",_max_shots)
