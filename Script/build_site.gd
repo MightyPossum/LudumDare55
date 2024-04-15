@@ -62,10 +62,10 @@ func _calculate_stats():
 	var tower = %Tower
 	if tower_upgrade_level == 1:
 		tower.fire_delay = 1
-		tower.tower_damage = 0.5
+		tower.tower_damage = 0.75
 	elif tower_upgrade_level <= 10:
 		tower.fire_delay = 1 - ((tower_upgrade_level-1) * 0.1)
-		tower.tower_damage = 0.5
+		tower.tower_damage = 0.75
 	else:
 		tower.fire_delay = 1 - (9 * 0.1)
 		tower.tower_damage = 0.5 + tower_upgrade_level-10

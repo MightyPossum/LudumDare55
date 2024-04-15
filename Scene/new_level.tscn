@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1bwk1w7jb01u"]
+[gd_scene load_steps=23 format=3 uid="uid://b1bwk1w7jb01u"]
 
 [ext_resource type="PackedScene" uid="uid://bvexvcnax5fl" path="res://Scene/SacredObject.tscn" id="1_5x2oo"]
 [ext_resource type="Script" path="res://Script/GameHandler.gd" id="1_ptkri"]
@@ -116,6 +116,9 @@ sky_material = SubResource("ProceduralSkyMaterial_yinq6")
 [sub_resource type="Environment" id="Environment_6paxs"]
 background_mode = 2
 sky = SubResource("Sky_do314")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71eaj"]
+size = Vector3(54, 1, 0.001)
 
 [node name="Map1" type="Node3D" node_paths=PackedStringArray("pathNodes")]
 script = ExtResource("1_ptkri")
@@ -470,6 +473,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.32, 18.179, -38.5709)
 
 [node name="build_site_22" parent="BuildSites" instance=ExtResource("9_8gee0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6807, 18.179, 6.68869)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -94, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(52.265, 0, 0, 0, 42.225, 0, 0, 0, 3.20107e+06, 3.405, 67, 11.6184)
+shape = SubResource("BoxShape3D_71eaj")
 
 [editable path="CanvasLayer/pause_menu"]
 [editable path="Player"]
