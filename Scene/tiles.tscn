@@ -143,7 +143,7 @@ shadow_mesh = SubResource("ArrayMesh_xkis3")
 size = Vector3(4.38013, 0.70459, 5.01239)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yaua"]
-size = Vector3(1.28064, 2.04736, 5.01001)
+size = Vector3(1.28064, 84.2078, 5.01001)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyniy"]
 resource_name = "Material"
@@ -217,10 +217,10 @@ shadow_mesh = SubResource("ArrayMesh_xpdio")
 size = Vector3(4.30493, 0.666016, 4.40881)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_geywy"]
-size = Vector3(1.26538, 2.03516, 4.97391)
+size = Vector3(1.26538, 41.6414, 4.97391)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_23pjd"]
-size = Vector3(5.03644, 1.95905, 1.30664)
+size = Vector3(5.03644, 41.9444, 1.30664)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lix6y"]
 resource_name = "Material.002"
@@ -488,11 +488,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.326782, -0.147705, 0.00155
 shape = SubResource("BoxShape3D_mykda")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="wallTile/wallTile/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87628, 0.523682, -0.00525331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87628, 41.6039, -0.00525331)
 shape = SubResource("BoxShape3D_7yaua")
 
 [node name="cornerTile2" type="Node3D" parent="."]
-visible = false
 
 [node name="cornerTile" type="MeshInstance3D" parent="cornerTile2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481985, 0)
@@ -507,11 +506,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33728, -0.166992, 0.316223
 shape = SubResource("BoxShape3D_xkneh")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="cornerTile2/cornerTile/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87756, 0.517578, 0.00242329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87756, 20.3207, 0.00242329)
 shape = SubResource("BoxShape3D_geywy")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="cornerTile2/cornerTile/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00228691, 0.493256, -1.86719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00228691, 20.4859, -1.86719)
 shape = SubResource("BoxShape3D_23pjd")
 
 [node name="grassTile2" type="Node3D" parent="."]
@@ -528,6 +527,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00692749, -0.213623, -6.10
 shape = SubResource("BoxShape3D_t60gx")
 
 [node name="stairsTile" type="Node3D" parent="."]
+visible = false
 
 [node name="Stairs" type="MeshInstance3D" parent="stairsTile"]
 mesh = SubResource("ArrayMesh_grywq")
