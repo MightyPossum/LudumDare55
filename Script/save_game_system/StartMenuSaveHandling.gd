@@ -22,7 +22,7 @@ func clear_save_game() -> void:
     if ResourceLoader.exists(USER_DATA_PATH + SAVE_FILE_NAME):
 
         GLOBALVARIABLES.current_wave = 1
-        GLOBALVARIABLES.amount_of_cash = 500000000
+        GLOBALVARIABLES.amount_of_cash = 0
         GLOBALVARIABLES.health = 10
         GLOBALVARIABLES.tower_cost = 500
         GLOBALVARIABLES.scoreboard_array = [Array([0,0]),Array([0,0]),Array([0,0]),Array([0,0]),Array([0,0])]
