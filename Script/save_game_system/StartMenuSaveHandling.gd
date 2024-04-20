@@ -33,7 +33,7 @@ func clear_save_game() -> void:
         game_data.save_array(GLOBALVARIABLES.SCOREBOARD, scoreboard)
 
         ## SAVING BUILD SITES
-        var build_sites_built: Array
+        var build_sites_built: Array = Array()
         game_data.save_array(GLOBALVARIABLES.BUILD_SITES, Array([build_sites_built]))
 
         save_to_file()

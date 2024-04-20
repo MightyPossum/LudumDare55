@@ -13,11 +13,12 @@ var reload : bool = false
 func _ready():
 	pass
 
-func _process(delta):
-	if current_enemy != null and built == true:
-		_attack(current_enemy, delta)
-	elif enemies_in_range.size() > 0:
-		current_enemy = enemies_in_range.front()
+func _process(_delta):
+	if built:
+		if current_enemy != null and built == true:
+			_attack(current_enemy)
+		elif enemies_in_range.size() > 0:
+			current_enemy = enemies_in_range.front()
 	
 func _attack(rtarget):
 	if !reload:

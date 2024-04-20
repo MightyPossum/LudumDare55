@@ -3,20 +3,20 @@ extends Node
 const USER_DATA_PATH: String = "user://save/"
 const SAVE_FILE_NAME: String = "TheGameSave.tres"
 
-var game_data = GameData.new()
+var save_game_data = SaveGameData.new()
 var reset_in_progress: bool = false
 
 ## Saves to the actual file
 func save_to_file() -> void:
-	ResourceSaver.save(game_data, USER_DATA_PATH + SAVE_FILE_NAME)
+	ResourceSaver.save(save_game_data, USER_DATA_PATH + SAVE_FILE_NAME)
 
 ## Loads data from the actual file
 func load_data() -> void:
-	game_data = ResourceLoader.load(USER_DATA_PATH + SAVE_FILE_NAME).duplicate(true)
+	save_game_data = ResourceLoader.load(USER_DATA_PATH + SAVE_FILE_NAME).duplicate(true)
 
 #returns a saved date
 func load_date() -> String:
-	return game_data.date
+	return save_game_data.date
 
 # Returns a saved ARRAY value which goes down three levels
 # x for first level
@@ -33,7 +33,7 @@ func load_date() -> String:
 
 func load_array_data_n(n: int, x: int = -1, y:int = -1, z:int = -1):
 	var return_value
-	var saved_array = game_data.load_array(n)
+	var saved_array = save_game_data.load_array(n)
 	
 	return_value = get_array_value(saved_array, x,y,z)
 
@@ -91,17 +91,17 @@ func verify_save_directory(path : String) -> void:
 
 func save_game() -> void:
 	var wave_state_details = Array([GLOBALVARIABLES.current_wave, GLOBALVARIABLES.amount_of_cash])
-	game_data.save_array(GLOBALVARIABLES.WAVE_STATE_DETAILS, wave_state_details)
+	save_game_data.save_array(GLOBALVARIABLES.WAVE_STATE_DETAILS, wave_state_details)
 	var scoreboard = Array([GLOBALVARIABLES.scoreboard_array])
-	game_data.save_array(GLOBALVARIABLES.SCOREBOARD, scoreboard)
+	save_game_data.save_array(GLOBALVARIABLES.SCOREBOARD, scoreboard)
 
 	## SAVING BUILD SITES
-	var build_sites_built: Array
+	var build_sites_built: Array = Array()
 	for build_site in get_node('/root/Map1/BuildSites').get_children():
 		if build_site.built:
 			build_sites_built.append(Array([build_site.name,build_site.tower_upgrade_level]))
 
-	game_data.save_array(GLOBALVARIABLES.BUILD_SITES, Array([build_sites_built]))
+	save_game_data.save_array(GLOBALVARIABLES.BUILD_SITES, Array([build_sites_built]))
 
 	save_to_file()
 
