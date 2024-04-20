@@ -19,7 +19,7 @@ func _process(delta):
 	elif enemies_in_range.size() > 0:
 		current_enemy = enemies_in_range.front()
 	
-func _attack(rtarget, delta):
+func _attack(rtarget):
 	if !reload:
 		var projectile = projectileModel.instantiate()
 		get_parent().add_child(projectile)

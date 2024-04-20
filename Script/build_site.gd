@@ -18,7 +18,7 @@ var base_upgrade_cost : int = 650
 func _ready():
 	_calculate_stats()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Use") and player_in_area == true:
 		if not built:
 			if GLOBALVARIABLES.amount_of_cash >= GLOBALVARIABLES.tower_cost:
@@ -44,14 +44,14 @@ func _upgrade_tower():
 	_calculate_stats()
 	get_node(GLOBALVARIABLES.gamehandler_path)._toggle_upgrade_screen(upgrade_cost, true, tower_upgrade_level, %Tower)
 	
-func _on_area_3d_body_entered(body):
+func _on_area_3d_body_entered(_body):
 	player_in_area = true
 	if not built:
 		GLOBALVARIABLES.build = true
 	else:
 		get_node(GLOBALVARIABLES.gamehandler_path)._toggle_upgrade_screen(upgrade_cost, true, tower_upgrade_level, %Tower)
 
-func _on_area_3d_body_exited(body):
+func _on_area_3d_body_exited(_body):
 	player_in_area = false
 	if not built:
 		GLOBALVARIABLES.build = false
@@ -66,7 +66,7 @@ func _calculate_stats():
 		tower.tower_damage = 0.75
 	elif tower_upgrade_level <= 10:
 		if tower_upgrade_level == 2:
-			upgrade_cost = base_upgrade_cost*upgrade_cost_increase
+			upgrade_cost = int(base_upgrade_cost*upgrade_cost_increase)
 
 		tower.fire_delay = 1 - ((tower_upgrade_level-1) * 0.1)
 		tower.tower_damage = 0.75
@@ -75,5 +75,5 @@ func _calculate_stats():
 		tower.tower_damage = 0.5 + tower_upgrade_level-10
 
 	if tower_upgrade_level > 2:
-		upgrade_cost = base_upgrade_cost + base_upgrade_cost*(tower_upgrade_level-2)*upgrade_cost_increase
+		upgrade_cost = int(base_upgrade_cost + base_upgrade_cost*(tower_upgrade_level-2)*upgrade_cost_increase)
 		
