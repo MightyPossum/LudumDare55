@@ -32,14 +32,11 @@ var round_wait_delay : float = 3-spawning_delay
 func _set_wave_details(wave_number : int) -> void:
 
 	var late_wave_incrementer : float = 0.0
-
-	if wave_number < 5:
-		late_wave_incrementer = wave_number*2
-	else:
-		late_wave_incrementer = wave_number
+	
+	late_wave_incrementer = wave_number
 	
 	if wave_number >= 5:
-		late_wave_incrementer += floor(wave_number/5)
+		late_wave_incrementer += int(wave_number/5)
 
 	enemies_to_spawn = int(wave_number * (4 + (late_wave_incrementer/2)))
 
@@ -229,7 +226,7 @@ func _update_cost(_cost_amount : int):
 	GLOBALVARIABLES.tower_cost = _cost_amount
 	%cost_amount.text = str(GLOBALVARIABLES.tower_cost, " $")
 
-func _toggle_upgrade_screen(_cost_amount : int, toggle : bool, tower_level : int, tower : Node3D):
+func _toggle_upgrade_screen(_cost_amount : int, toggle : bool, tower_level : int):
 	%upgrade_hud.visible = toggle
 	%upgrade_label.text = str("Press 'E' to upgrade to level ",tower_level+1) 
 	%upgrade_cost.text = str(_cost_amount, " $")
@@ -240,7 +237,7 @@ func _toggle_upgrade_screen(_cost_amount : int, toggle : bool, tower_level : int
 		%upgrade_stat_label.text = str("UPGRADE TOWER DAMAGE ++")
 
 
-func _on_fallbox_body_entered(body:Node3D):
+func _on_fallbox_body_entered(_body:Node3D):
 	_game_over()
 
 func _on_hint_timer_timeout():

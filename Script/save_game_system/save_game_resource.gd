@@ -1,5 +1,5 @@
 extends Resource
-class_name GameData
+class_name SaveGameData
 
 @export var date: String = ""
 @export var array_1: Array = []
