@@ -32,13 +32,13 @@ var round_wait_delay : float = 3-spawning_delay
 func _set_wave_details(wave_number : int) -> void:
 
 	var late_wave_incrementer : float = 0.0
-	
-	late_wave_incrementer = wave_number
-	
+
+	late_wave_incrementer = wave_number*1.5
+
 	if wave_number >= 5:
 		late_wave_incrementer += int(wave_number/5)
 
-	enemies_to_spawn = int(wave_number * (4 + (late_wave_incrementer/2)))
+	enemies_to_spawn = int(wave_number * (5 + (late_wave_incrementer/2)))
 
 	current_enemy_speed = 5 + (wave_number + late_wave_incrementer)/10
 	

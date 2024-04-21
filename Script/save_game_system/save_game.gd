@@ -105,9 +105,23 @@ func save_game() -> void:
 
 	save_to_file()
 
-## Deletes everything in the savefile
-func clear_save() -> void:
-	reset_in_progress = true
-	save_game()
-	save_to_file()
-	reset_in_progress = false
+## Deletes everything except for the leaderboard
+func game_over_clear_save() -> void:
+
+	if ResourceLoader.exists(USER_DATA_PATH + SAVE_FILE_NAME):
+
+		GLOBALVARIABLES.current_wave = 1
+		GLOBALVARIABLES.amount_of_cash = 0
+		GLOBALVARIABLES.health = 10
+		GLOBALVARIABLES.tower_cost = 500
+
+		var wave_state_details = Array([GLOBALVARIABLES.current_wave, GLOBALVARIABLES.amount_of_cash])
+		save_game_data.save_array(GLOBALVARIABLES.WAVE_STATE_DETAILS, wave_state_details)
+		var scoreboard = Array([GLOBALVARIABLES.scoreboard_array])
+		save_game_data.save_array(GLOBALVARIABLES.SCOREBOARD, scoreboard)
+
+		## SAVING BUILD SITES
+		var build_sites_built: Array = Array()
+		save_game_data.save_array(GLOBALVARIABLES.BUILD_SITES, Array([build_sites_built]))
+
+		save_to_file()
