@@ -25,5 +25,14 @@ shape = SubResource("CylinderShape3D_ma3sk")
 unique_name_in_owner = true
 visible = false
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.965926, 0, 0.258819, 0.25, 0.258819, -0.933013, -0.0669873, 0.965926, 0.25, 0, 12.2487, 0)
+target_position = Vector3(0, 0, -45)
+collision_mask = 27
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -98,7 +98,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed('shoot') && !shooting && shots_fired < max_shots_fired:
 		anim_player.play("Attack")
 		var projectile = projectileModel.instantiate()
-		projectile.damage = 0.5
+		projectile.damage = 0.5 + (GLOBALVARIABLES.current_wave*0.05)
 		get_parent().add_child(projectile)
 		projectile.global_position = %projectileSpawn.global_position
 		projectile.rotation = camera.rotation

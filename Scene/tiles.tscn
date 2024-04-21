@@ -465,7 +465,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481985, 0)
 mesh = SubResource("ArrayMesh_46hkn")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="groundTile/groundTile"]
+[node name="StaticBody3D" type="StaticBody3D" parent="groundTile/groundTile" groups=["terrain"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.481985, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="groundTile/groundTile/StaticBody3D"]
@@ -475,12 +475,12 @@ shape = SubResource("BoxShape3D_8hm52")
 [node name="wallTile" type="Node3D" parent="."]
 visible = false
 
-[node name="wallTile" type="MeshInstance3D" parent="wallTile"]
+[node name="wallTile" type="MeshInstance3D" parent="wallTile" groups=["terrain"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481985, 0)
 mesh = SubResource("ArrayMesh_y33y4")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wallTile/wallTile"]
+[node name="StaticBody3D" type="StaticBody3D" parent="wallTile/wallTile" groups=["terrain"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.481985, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wallTile/wallTile/StaticBody3D"]
@@ -498,7 +498,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481985, 0)
 mesh = SubResource("ArrayMesh_o27gs")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="cornerTile2/cornerTile"]
+[node name="StaticBody3D" type="StaticBody3D" parent="cornerTile2/cornerTile" groups=["terrain"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.481985, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="cornerTile2/cornerTile/StaticBody3D"]
@@ -520,7 +520,7 @@ visible = false
 mesh = SubResource("ArrayMesh_1qvn4")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="grassTile2/grassTile"]
+[node name="StaticBody3D" type="StaticBody3D" parent="grassTile2/grassTile" groups=["terrain"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="grassTile2/grassTile/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00692749, -0.213623, -6.10352e-05)
@@ -533,7 +533,7 @@ visible = false
 mesh = SubResource("ArrayMesh_grywq")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="stairsTile/Stairs"]
+[node name="StaticBody3D" type="StaticBody3D" parent="stairsTile/Stairs" groups=["terrain"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairsTile/Stairs/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018158, 0.60498, -6.10352e-05)
@@ -579,7 +579,7 @@ visible = false
 mesh = SubResource("ArrayMesh_bw51c")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="stairsTopTile/stairsTop"]
+[node name="StaticBody3D" type="StaticBody3D" parent="stairsTopTile/stairsTop" groups=["terrain"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairsTopTile/stairsTop/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0136719, 0.31665, 1.87627)

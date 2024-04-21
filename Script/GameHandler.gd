@@ -27,7 +27,7 @@ var timer_counter : float = 0
 var current_number_of_enemies : int;
 
 var spawning : bool = true;
-var round_wait_delay : float = 3-spawning_delay
+var round_wait_delay : float = 10-spawning_delay
 
 func _set_wave_details(wave_number : int) -> void:
 
@@ -64,14 +64,14 @@ func _ready() -> void:
 	_update_cost(GLOBALVARIABLES.tower_cost)
 	wave_countdown = true
 	%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
-	round_wait_delay = 30
+	round_wait_delay = 20
 	wave_timer = round_wait_delay+spawning_delay
 	%next_wave_timer.visible = true
 	%enemies_left_hud.visible = false
 	%tower_hint.visible = true
 	await get_tree().create_timer(round_wait_delay, false).timeout
 	_prepare_wave();
-	round_wait_delay = 20
+	round_wait_delay = 10
 	
 func _prepare_wave() -> void:
 	_set_wave_details(GLOBALVARIABLES.current_wave);
@@ -123,6 +123,7 @@ func _spawn_new_enemy():
 func _add_enemy_to_lane():
 
 	var spawn_ready_enemy = enemyScenes[_get_random_enemy()].instantiate();
+	spawn_ready_enemy.name = 'enemy_' + str(current_number_of_enemies) 
 	pathNodes[_get_random_path()].add_child(spawn_ready_enemy);
 
 func _get_random_path() -> int:
@@ -203,7 +204,7 @@ func pauseMenu():
 func _enemy_died():
 	current_number_of_enemies -= 1
 	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
-	_update_cash(randi_range(100, 140))
+	_update_cash(randi_range(120, 160))
 
 func _handle_life_lost():
 	GLOBALVARIABLES.health -= 1;
@@ -230,8 +231,8 @@ func _toggle_upgrade_screen(_cost_amount : int, toggle : bool, tower_level : int
 	%upgrade_hud.visible = toggle
 	%upgrade_label.text = str("Press 'E' to upgrade to level ",tower_level+1) 
 	%upgrade_cost.text = str(_cost_amount, " $")
-	if tower_level < 10:
-		%upgrade_stat_label.text = str("UPGRADE TOWER SPEED ++")
+	if tower_level <= 19:
+		%upgrade_stat_label.text = str("UPGRADE TOWER SPEED AND DAMAGE++")
 	else:
 		
 		%upgrade_stat_label.text = str("UPGRADE TOWER DAMAGE ++")

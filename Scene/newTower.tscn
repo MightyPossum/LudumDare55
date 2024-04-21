@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://67phfgxviiii" path="res://Models/Tower.glb" id="3_s7evq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7vvsp"]
-radius = 4.0
+radius = 45.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbh6d"]
 size = Vector3(3.46136, 0.160752, 3.68256)
@@ -22,8 +22,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.88771, 0)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
-transform = Transform3D(10.19, 2.84217e-14, 0, 2.84217e-14, 10.19, 0, 0, 0, 10.19, 0, 0, 0)
+[node name="RangeShape" type="CollisionShape3D" parent="Range"]
+unique_name_in_owner = true
+transform = Transform3D(1, -2.78918e-15, 0, 2.78918e-15, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_7vvsp")
 
 [node name="Model" parent="." instance=ExtResource("3_s7evq")]
