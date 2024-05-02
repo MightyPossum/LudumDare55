@@ -7,7 +7,8 @@ Some post jam findings and thoughts
 * Test the game on a lower end system. Emulate a computer
 * Add an FPS counter
 to _process(delta) or similar, add to UI if needed
-``` var fps = Engine.get_frames_per_second()
+```
+    var fps = Engine.get_frames_per_second()
     print(fps)
 ```	
 * Add occlusion to minimize rendering
