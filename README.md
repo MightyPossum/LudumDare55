@@ -10,9 +10,9 @@ to _process(delta) or similar, add to UI if needed
 ``` var fps = Engine.get_frames_per_second()
     print(fps)
 ```	
-* Add occulsion to minimize rendering
+* Add occlusion to minimize rendering
 
-* Manualy handle everything running through _physics_process() or _process()
+* Manually handle everything running through _physics_process() or _process()
 	To make sure nothing is running unnecessarily or without being managed and controlled.
 
 * Fix all warnings before building. In Editor warnings can cause larger issues in exported version
