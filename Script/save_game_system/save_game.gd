@@ -1,7 +1,7 @@
 extends Node
 
 const USER_DATA_PATH: String = "user://save/"
-const SAVE_FILE_NAME: String = "TheGameSave.tres"
+const SAVE_FILE_NAME: String = "TheGameSave.res"
 
 var save_game_data = SaveGameData.new()
 var reset_in_progress: bool = false
@@ -66,6 +66,8 @@ func get_array_value(saved_array, x,y,z):
 func load_current_state() -> void:
 	##Loading the actual data
 	load_data()
+	
+	GLOBALVARIABLES.tower_cost = 500
 	GLOBALVARIABLES.current_wave = load_array_data_n(GLOBALVARIABLES.WAVE_STATE_DETAILS, GLOBALVARIABLES.WAVE_STATE_DETAILS_ENUM.CURRENT_WAVE)
 	GLOBALVARIABLES.amount_of_cash = load_array_data_n(GLOBALVARIABLES.WAVE_STATE_DETAILS, GLOBALVARIABLES.WAVE_STATE_DETAILS_ENUM.MONEY_AMOUNT)
 	GLOBALVARIABLES.scoreboard_array = load_array_data_n(GLOBALVARIABLES.SCOREBOARD, GLOBALVARIABLES.SCOREBOARD_ENUM.SCOREBOARD_SAVE)

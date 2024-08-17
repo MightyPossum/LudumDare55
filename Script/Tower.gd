@@ -22,7 +22,7 @@ func _physics_process(_delta):
 	if check_for_enemies && built:
 		check_for_enemies = false
 		if enemies_in_range.size() > 0:
-			await get_tree().create_timer(0.25, false).timeout
+			await get_tree().create_timer(fire_delay/2, false).timeout
 			for enemy in enemies_in_range:
 				get_parent().get_node('RayCast3D').look_at(enemy.global_position, Vector3.UP)
 				get_parent().get_node('RayCast3D').force_raycast_update()
@@ -39,7 +39,6 @@ func _attack(rtarget):
 		var projectile = projectileModel.instantiate()
 		get_parent().add_child(projectile)
 		projectile.damage = tower_damage
-		
 		var target_direction = rtarget.global_transform.origin
 		
 		projectile.global_position = $Model/Crystal.global_position
@@ -61,15 +60,15 @@ func _calculate_stats(upgrade_level : int):
 	if upgrade_level == 1:
 		fire_delay = 1
 		tower_damage = 0.75
-		%RangeShape.shape.radius += (upgrade_level)
+		%RangeShape.shape.radius = 45 + (upgrade_level)
 	elif upgrade_level <= 19:
 		fire_delay = 1 - ((upgrade_level-1) * 0.05)
 		tower_damage = 0.75 * (upgrade_level/2)
-		%RangeShape.shape.radius += (upgrade_level)
+		%RangeShape.shape.radius = 45 + (upgrade_level)
 	else:
 		fire_delay = 1 - (19 * 0.05)
 		tower_damage = 0.75 * (upgrade_level/2)
-		%RangeShape.shape.radius += (19)
+		%RangeShape.shape.radius = (45 + 19)
 		
 
 

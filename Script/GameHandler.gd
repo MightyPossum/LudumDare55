@@ -15,7 +15,10 @@ var total_cash : int = 0
 
 var spawning_delay_default : float = 5.0
 
-var enemies_to_spawn : int;
+var wave_total_enemies : int;
+var enemies_killed : int;
+var enemies_spawned : int; # Remove?
+
 var current_enemy_speed : float;
 var spawning_delay : float = spawning_delay_default;
 var current_enemy_health : int;
@@ -23,8 +26,6 @@ var current_enemy_health : int;
 var wave_countdown : bool
 var wave_timer : float = round_wait_delay
 var timer_counter : float = 0
-
-var current_number_of_enemies : int;
 
 var spawning : bool = true;
 var round_wait_delay : float = 10-spawning_delay
@@ -38,7 +39,7 @@ func _set_wave_details(wave_number : int) -> void:
 	if wave_number >= 5:
 		late_wave_incrementer += int(wave_number/5)
 
-	enemies_to_spawn = int(wave_number * (5 + (late_wave_incrementer/2)))
+	wave_total_enemies = int(wave_number * (5 + (late_wave_incrementer/2)))
 
 	current_enemy_speed = 5 + (wave_number + late_wave_incrementer)/10
 	
@@ -65,7 +66,9 @@ func _ready() -> void:
 	wave_countdown = true
 	%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
 	round_wait_delay = 20
+	_set_wave_details(GLOBALVARIABLES.current_wave);
 	wave_timer = round_wait_delay+spawning_delay
+	print(str("wave_timer: ",wave_timer," Round Wait Delay: ", round_wait_delay, " Spawning Delay: ", spawning_delay))
 	%next_wave_timer.visible = true
 	%enemies_left_hud.visible = false
 	%tower_hint.visible = true
@@ -75,7 +78,7 @@ func _ready() -> void:
 	
 func _prepare_wave() -> void:
 	_set_wave_details(GLOBALVARIABLES.current_wave);
-	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
+	%enemies_left_count.text = str(wave_total_enemies)
 	spawning = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -92,7 +95,7 @@ func _physics_process(delta: float) -> void:
 	
 	if wave_countdown:
 		timer_counter += delta
-		%next_wave_countdown.text = str(int(wave_timer-timer_counter))
+		%next_wave_countdown.text = str(floor(wave_timer-timer_counter))
 		if timer_counter >= wave_timer:
 			wave_countdown = false
 			timer_counter = 0
@@ -101,16 +104,15 @@ func _physics_process(delta: float) -> void:
 
 
 func _spawn_new_enemy():
-	if enemies_to_spawn >= 1:
+	if enemies_spawned < wave_total_enemies:
+		enemies_spawned += 1;
 		_add_enemy_to_lane();
-		current_number_of_enemies += 1;
-		enemies_to_spawn -= 1
 		spawning = false
-	elif enemies_to_spawn <= 0 and current_number_of_enemies <= 0:
+	elif enemies_spawned == wave_total_enemies && enemies_killed == wave_total_enemies:
 		wave_countdown = true
 		%next_wave_timer.visible = true
 		%enemies_left_hud.visible = false
-		wave_timer = round_wait_delay+round(spawning_delay)
+		wave_timer = round_wait_delay+floor(spawning_delay)
 		GLOBALVARIABLES.current_wave += 1
 		%next_wave_label.text = str('Wave ',GLOBALVARIABLES.current_wave, ' in:') 
 		%save_handler.save_game()
@@ -123,7 +125,7 @@ func _spawn_new_enemy():
 func _add_enemy_to_lane():
 
 	var spawn_ready_enemy = enemyScenes[_get_random_enemy()].instantiate();
-	spawn_ready_enemy.name = 'enemy_' + str(current_number_of_enemies) 
+	spawn_ready_enemy.name = 'enemy_' + str(enemies_spawned) 
 	pathNodes[_get_random_path()].add_child(spawn_ready_enemy);
 
 func _get_random_path() -> int:
@@ -202,8 +204,8 @@ func pauseMenu():
 	paused = !paused
 
 func _enemy_died():
-	current_number_of_enemies -= 1
-	%enemies_left_count.text = str(enemies_to_spawn + current_number_of_enemies)
+	enemies_killed += 1
+	%enemies_left_count.text = str(wave_total_enemies - enemies_killed)
 	_update_cash(randi_range(120, 160))
 
 func _handle_life_lost():
